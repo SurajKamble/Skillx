@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(firstname: 'Suraj', lastname: 'Kamble', email: 'kamble.suraj@outlook.com')
-User.create(firstname: 'Suraj', lastname: 'Kamble', email: 'kamble.suraj@outlook.com')
-User.create(firstname: 'Suraj', lastname: 'Kamble', email: 'kamble.suraj@outlook.com')
+User.create(firstname: 'Suraj', lastname: 'Kamble', email: 'suraj00797@yahoo.com')
+User.create(firstname: 'Suraj', lastname: 'Kamble', email: 'surajkamble00797@gmail.com')
 
 
 Skill.create(name: 'Software Development')
