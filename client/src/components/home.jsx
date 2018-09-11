@@ -14,14 +14,15 @@ export default class Home extends Component {
 
     this.state = {
       allSkills: [],
+      selectedSkills: [],
       show: true
     };
   }
 
   componentDidMount() {
+    console.log("In mount");
     this.getAllSkills()
   }
-
 
   handleHide() {
     this.setState({ show: false });
@@ -45,7 +46,6 @@ export default class Home extends Component {
         <GlobalNav/>
         <div className="modal-container">
           <Modal
-            className="modal-dialog"
             show={this.state.show}
             onHide={this.handleHide}
             container={this}

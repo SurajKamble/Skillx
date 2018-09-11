@@ -20,6 +20,25 @@ export function getSkills() {
     });
 }
 
+export function signOut() {
+  return axios.delete("api/auth/sign_out", {
+    headers: {
+      'access-token': localStorage.getItem("access-token"),
+      'client': localStorage.getItem("client"),
+      'uid': localStorage.getItem("uid"),
+      'expiry': localStorage.getItem("expiry") }
+  });
+}
+
+export function resetInitialState() {
+  localStorage.setItem("isAuthenticated", false);
+  localStorage.removeItem("client");
+  localStorage.removeItem("access-token");
+  localStorage.removeItem("uid");
+  localStorage.removeItem("expiry");
+}
+
+
 export function setInitialState(response) {
   localStorage.setItem("isAuthenticated", true);
   localStorage.setItem("client", response.headers['client']);

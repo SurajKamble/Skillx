@@ -8,9 +8,29 @@ import { Redirect, Link } from 'react-router-dom';
 export default class GlobalNav extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      signedOut: false
+    }
+    this.signOut = this.signOut.bind(this);
+  }
+
+  signOut() {
+    APIUtil.signOut().then(response => {
+      APIUtil.resetInitialState()
+      this.setState({
+        signedOut: true
+      })
+      console.log(response)
+    }).catch(error => {
+      console.log(error)
+    });
   }
 
   render() {
+    if (this.state.signedOut) {
+      return <Redirect to="/sign_up" />
+    }
+
     return (
       <Navbar collapseOnSelect>
     <Navbar.Header>
@@ -29,7 +49,7 @@ export default class GlobalNav extends Component {
       <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown" pullRight>
         <MenuItem eventKey={3.1}>Edit Profile</MenuItem>
         <MenuItem divider />
-        <MenuItem eventKey={3.3}>Sign out</MenuItem>
+        <MenuItem eventKey={3.3} onClick={this.signOut}>Sign out</MenuItem>
       </NavDropdown>
     </Nav>
     <Nav className="navbar-margin" pullRight>

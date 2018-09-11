@@ -220,17 +220,21 @@ body {
   width: 80% !important;
 }
 
+.navbar {
+  border: 0px;
+}
+
+.navbar-default {
+  border-radius: 0px;
+  background-image: linear-gradient(to bottom,#484848 0,#484848 100%);
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover,
+ .navbar-default .navbar-nav>li>a, .navbar-default .navbar-brand,
+ .navbar-default .navbar-brand:hover {
+    color: white;
+}
+
 .navbar-margin {
   margin-top: 5px;
-}
-
-.modal-dialog (min-width: 768px) {
-    position: absolute;
-    top: 30%;
-    left: 15%;
-    transform: translate(-15%, -40%) !important;
-}
-
-.modal-title {
-  text-align: center;
 }
