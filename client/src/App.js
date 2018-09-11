@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import SignUp from './components/sign_up';
 import Home from './components/home';
+import Login from './components/login';
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 
 class App extends Component {
@@ -20,7 +21,7 @@ class App extends Component {
           ) : (
             <Redirect
               to={{
-                pathname: "/sign_up"
+                pathname: "/login"
               }}
             />
           )
@@ -32,6 +33,7 @@ class App extends Component {
         <Router>
           <div>
             <PrivateRoute path="/" component={ Home } />
+            <Route path="/login" component={ Login } />
             <Route path="/sign_up" component={ SignUp } />
           </div>
         </Router>

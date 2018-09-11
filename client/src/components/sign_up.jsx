@@ -3,7 +3,7 @@ import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Grid, Row, Col } from "react-bootstrap";
 import "./sign_up.css";
 import * as APIUtil from "../util/api_util";
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 export default class SignUp extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export default class SignUp extends Component {
 
     const user = Object.assign({}, this.state);
 
-    APIUtil.signUpUser(user).then(response => {
+    APIUtil.signUp(user).then(response => {
       APIUtil.setInitialState(response)
       console.log(response)
       this.setState({ isAuthenticated: true });
@@ -57,7 +57,10 @@ export default class SignUp extends Component {
   }
 
   render() {
+    console.log(localStorage.getItem("isAuthenticated"));
+    console.log(this.state.isAuthenticated);
     if (localStorage.getItem("isAuthenticated") === "true" || this.state.isAuthenticated) {
+      console.log("in if");
       return <Redirect to="/" />;
     }
     const errorWarning = <i className="material-icons">warning</i>;
@@ -155,7 +158,7 @@ export default class SignUp extends Component {
                 Register Now
               </button>
             </div>
-            <div className="text-center">Already have an account?</div>
+            <div className="text-center">Already have an account? <Link to="/login">Sign in</Link></div>
           </form>
         </div>
       </div>

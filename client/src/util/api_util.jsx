@@ -1,12 +1,19 @@
 import axios from "axios";
 
-export function signUpUser(user) {
+export function signUp(user) {
   return axios.post("api/auth", {
       firstname: user["firstname"],
       lastname: user["lastname"],
       email: user["email"],
       password: user["password"],
       password_confirmation: user["password_confirmation"]
+    });
+}
+
+export function login(user) {
+  return axios.post("api/auth/sign_in", {
+      email: user["email"],
+      password: user["password"],
     });
 }
 
@@ -36,6 +43,9 @@ export function resetInitialState() {
   localStorage.removeItem("access-token");
   localStorage.removeItem("uid");
   localStorage.removeItem("expiry");
+  localStorage.removeItem("email");
+  localStorage.removeItem("firstname");
+  localStorage.removeItem("lastname");
 }
 
 
@@ -45,4 +55,7 @@ export function setInitialState(response) {
   localStorage.setItem("access-token", response.headers['access-token']);
   localStorage.setItem("uid", response.headers['uid']);
   localStorage.setItem("expiry", response.headers['expiry']);
+  localStorage.setItem("email", response.data.data['email']);
+  localStorage.setItem("firstname", response.data.data['firstname']);
+  localStorage.setItem("lastname", response.data.data['lastname']);
 }
