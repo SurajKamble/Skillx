@@ -23,6 +23,8 @@ export default class Home extends Component {
     super(props);
     this.handleHide = this.handleHide.bind(this);
     this.getAllSkills = this.getAllSkills.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.addSkills = this.addSkills.bind(this);
 
     this.state = {
       allSkills: [],
@@ -35,16 +37,36 @@ export default class Home extends Component {
     this.getAllSkills()
   }
 
-  handleHide() {
-    this.setState({show: false});
+  addSkills() {
+    console.log(this.state.selectedSkills);
+    this.state.selectedSkills = this.state.selectedSkills.map(skill_data => skill_data.value);
+    console.log(this.state.selectedSkills);
+    APIUtil.addSkills(this.state.selectedSkills).then(response => {
+      console.log(response)
+      this.setState({show: false});
+    }).catch(error => {
+      console.log(error.response);
+    });
   }
 
   getAllSkills() {
     APIUtil.getSkills().then(response => {
+      console.log(response)
       this.setState({
-        allSkills: response.data.map(skill => ({value: skill.name, label: skill.name}))
+        allSkills: response.data.map(skill => ({value: skill.id, label: skill.name}))
       })
     }).catch(error => {
+      console.log(error)
+    });
+  }
+
+  handleHide() {
+    this.setState({show: false});
+  }
+
+  handleChange(event) {
+    this.setState({
+      selectedSkills: event
     });
   }
 
@@ -60,10 +82,10 @@ export default class Home extends Component {
           </Modal.Header>
           <Modal.Body>
             Select upto 3 of your most significant skills
-            <Select isMulti="isMulti" name="colors" className="basic-multi-select" classNamePrefix="select" options={this.state.allSkills}/>
+            <Select isMulti="isMulti" onChange={this.handleChange} name="colors" className="basic-multi-select" classNamePrefix="select" options={this.state.allSkills}/>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.handleHide}>Next</Button>
+            <Button onClick={this.addSkills}>Next</Button>
           </Modal.Footer>
         </Modal>
       </div>

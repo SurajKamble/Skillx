@@ -57,10 +57,7 @@ export default class SignUp extends Component {
   }
 
   render() {
-    console.log(localStorage.getItem("isAuthenticated"));
-    console.log(this.state.isAuthenticated);
     if (localStorage.getItem("isAuthenticated") === "true" || this.state.isAuthenticated) {
-      console.log("in if");
       return <Redirect to="/" />;
     }
     const errorWarning = <i className="material-icons">warning</i>;

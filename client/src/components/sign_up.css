@@ -240,10 +240,7 @@ body {
     color: black;
 }
 
-.form-control {
-  height: 31px;
-}
-
-.form-control, .btn {
+.searchForm .form-control {
   min-height: 31px;
+  height: 31px;
 }
