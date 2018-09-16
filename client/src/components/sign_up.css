@@ -1,6 +1,6 @@
 body {
   height: 100%;
-  font-family: montserrat, arial, verdana;
+  font-family: Noto Sans, arial, verdana;
   background: transparent;
 }
 
@@ -187,7 +187,13 @@ body {
 }
 
 .form-control {
-  padding-top: 10px;
+  padding-top: 6px;
+}
+
+.searchInput {
+  background-image:url(../search-icon.png);
+  background-repeat: no-repeat;
+  background-position: 98% 50%;
 }
 
 .searchBar .form-control {
@@ -197,6 +203,12 @@ body {
   height: 30px;
   color: #808080;
   box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+  padding-left: 8px;
+}
+
+.navbar-form {
+  padding-top: 1px;
+  padding-left: 0px;
 }
 
 .navbar {
@@ -242,10 +254,6 @@ body {
     margin: 0 auto;
 }
 
-.css-1492t68 {
-  top: 58% !important;
-}
-
 .navbar {
   -webkit-box-shadow: -1px 3px 4px -3px rgba(211,211,211,1);
   -moz-box-shadow: -1px 3px 4px -3px rgba(211,211,211,1);
@@ -283,6 +291,7 @@ body {
 
 .nav-pills>li>a {
   height: 25px;
+  line-height: 15px;
   color: #808080;
   padding: 5px 5px;
   margin-bottom: 8px;
@@ -347,7 +356,7 @@ body {
 
 .add-post-panel {
   height: 50px;
-  line-height: 25px;
+  line-height: 22px;
 }
 
 .add-post-modal-header {
@@ -383,4 +392,14 @@ body {
     background-color: inherit;
     box-shadow: none;
     background-image: none;
+}
+
+.panel-default .panel-heading {
+  background-image: none;
+  background-color: inherit;
+  border: none;
+}
+
+.panel-title {
+  font-weight: bold;
 }
