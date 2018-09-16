@@ -2,7 +2,8 @@ class Api::UserSkillsController < ApplicationController
   before_action :authenticate_api_user!
 
   def index
-    @user_skills = UserSkill.all
+    byebug
+    @user_skills = UserSkill.where(user_id: params[:id])
     json_response(@user_skills)
   end
 

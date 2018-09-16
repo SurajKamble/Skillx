@@ -17,6 +17,15 @@ export function login(user) {
     });
 }
 
+export function getUserSkills(user) {
+  var userData = {
+    params: {
+      'user_id': localStorage.getItem("user_id")
+    }
+  }
+  return axios.get("/api/user_skills", userData, getHeaders());
+}
+
 export function getSkills() {
   return axios.get("api/skills", getHeaders());
 }

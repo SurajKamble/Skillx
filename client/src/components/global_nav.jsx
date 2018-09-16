@@ -34,9 +34,13 @@ export default class GlobalNav extends Component {
     });
   }
 
+  home() {
+    this.setState(prevState => prevState)
+  }
+
   render() {
     if (this.state.signedOut) {
-      return <Redirect to="/sign_up"/>
+      return <Redirect to="/login"/>
     }
     return (<Navbar collapseOnSelect={true}>
       <Navbar.Header>
@@ -46,14 +50,14 @@ export default class GlobalNav extends Component {
         <Navbar.Toggle/>
       </Navbar.Header>
       <Navbar.Collapse>
-        <Navbar.Form pullLeft={true} className="searchBar">
-          <FormGroup className="searchForm">
-            <FormControl className="searchForm" type="text" placeholder="Search"/>
+        <Navbar.Form pullLeft={true} className="searchForm">
+          <FormGroup className="searchBar">
+            <FormControl className="searchInput" type="text" placeholder="Search"/>
           </FormGroup>
         </Navbar.Form>
         <Nav className="navbar-margin" pullRight={true}>
           <NavDropdown eventKey={3} title={localStorage.getItem("firstname")} id="basic-nav-dropdown" pullRight={true}>
-            <MenuItem eventKey={3.1}>Edit Profile</MenuItem>
+            <MenuItem eventKey={3.1} href="/edit_profile">Edit Profile</MenuItem>
             <MenuItem divider={true}/>
             <MenuItem eventKey={3.3} onClick={this.signOut}>Sign out</MenuItem>
           </NavDropdown>

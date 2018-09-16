@@ -8,14 +8,16 @@ import {
   Row,
   Col,
   Modal,
-  Popover,
-  OverlayTrigger,
-  Tooltip
+  Panel,
+  NavItem,
+  Nav
 } from "react-bootstrap";
 import "./sign_up.css";
 import * as APIUtil from "../util/api_util";
 import {Redirect} from 'react-router-dom';
 import GlobalNav from './global_nav';
+import LeftNav from './left_nav';
+import AddPost from './add_post';
 import Select from 'react-select';
 
 export default class Home extends Component {
@@ -65,30 +67,109 @@ export default class Home extends Component {
   }
 
   handleChange(event) {
-    this.setState({
-      selectedSkills: event
-    });
+    this.setState({selectedSkills: event});
   }
 
   render() {
-    return (<div>
-      <GlobalNav/>
-      <div className="modal-container">
-        <Modal show={this.state.show} onHide={this.handleHide} container={this} aria-labelledby="contained-modal-title">
-          <Modal.Header closeButton={true}>
-            <Modal.Title className="modal-title">
-              Add Skills
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            Select upto 3 of your most significant skills
-            <Select isMulti="isMulti" onChange={this.handleChange} name="colors" className="basic-multi-select" classNamePrefix="select" options={this.state.allSkills}/>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button onClick={this.addSkills}>Next</Button>
-          </Modal.Footer>
-        </Modal>
-      </div>
-    </div>);
+    return (<Row className="show-grid">
+      <Col xsHidden sm={2} md={2} lg={2}>
+        <LeftNav/>
+      </Col>
+      <Col xs={12} sm={7} md={7} lg={7}>
+        <div>
+          <AddPost/>
+          <Panel>
+            <Panel.Heading>
+              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>Panel content</Panel.Body>
+          </Panel>
+          <Panel>
+            <Panel.Heading>
+              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>Panel content</Panel.Body>
+          </Panel>
+          <Panel>
+            <Panel.Heading>
+              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>Panel content</Panel.Body>
+          </Panel>
+          <Panel>
+            <Panel.Heading>
+              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>Panel content</Panel.Body>
+          </Panel>
+          <Panel>
+            <Panel.Heading>
+              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>Panel content</Panel.Body>
+          </Panel>
+          <Panel>
+            <Panel.Heading>
+              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>Panel content</Panel.Body>
+          </Panel>
+          <Panel>
+            <Panel.Heading>
+              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>Panel content</Panel.Body>
+          </Panel>
+          <Panel>
+            <Panel.Heading>
+              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>Panel content</Panel.Body>
+          </Panel>
+          <Panel>
+            <Panel.Heading>
+              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>Panel content</Panel.Body>
+          </Panel>
+          <Panel>
+            <Panel.Heading>
+              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>Panel content</Panel.Body>
+          </Panel>
+          <Panel>
+            <Panel.Heading>
+              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>Panel content</Panel.Body>
+          </Panel>
+          <Panel>
+            <Panel.Heading>
+              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
+            </Panel.Heading>
+            <Panel.Body>Panel content</Panel.Body>
+          </Panel>
+        </div>
+          <div className="modal-container">
+            <Modal show={this.state.show} onHide={this.handleHide} container={this} aria-labelledby="contained-modal-title">
+              <Modal.Header closeButton={true}>
+                <Modal.Title className="modal-title">
+                  Add Skills
+                </Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                Select upto 3 of your most significant skills
+                <Select isMulti="isMulti" onChange={this.handleChange} name="colors" className="basic-multi-select" classNamePrefix="select" options={this.state.allSkills}/>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button className="black-button" onClick={this.addSkills}>Next</Button>
+              </Modal.Footer>
+            </Modal>
+          </div>
+      </Col>
+      <Col xsHidden sm={3} md={3} lg={3}>
+      </Col>
+    </Row>);
   }
 }

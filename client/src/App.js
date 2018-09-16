@@ -4,6 +4,8 @@ import './App.css';
 import SignUp from './components/sign_up';
 import Home from './components/home';
 import Login from './components/login';
+import GlobalNav from './components/global_nav';
+import EditProfile from './components/edit_profile';
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 
 class App extends Component {
@@ -17,7 +19,7 @@ class App extends Component {
         {...rest}
         render={props =>
           localStorage.getItem("isAuthenticated") === "true" ? (
-            <Component {...props} />
+              <DefaultLayout component={Component} {...props} />
           ) : (
             <Redirect
               to={{
@@ -29,10 +31,24 @@ class App extends Component {
       />
     );
 
+    const DefaultLayout = ({component: Component, ...rest}) => {
+      return (
+        <Route {...rest} render={matchProps => (
+          <div className="main-container">
+            <GlobalNav/>
+            <div className="container">
+              <Component {...matchProps} />
+            </div>
+          </div>
+        )} />
+      )
+    };
+
     return (
         <Router>
           <div>
-            <PrivateRoute path="/" component={ Home } />
+            <PrivateRoute exact path="/" component={ Home } />
+            <PrivateRoute path="/edit_profile" component={ EditProfile } />
             <Route path="/login" component={ Login } />
             <Route path="/sign_up" component={ SignUp } />
           </div>
