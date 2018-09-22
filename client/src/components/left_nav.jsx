@@ -24,7 +24,8 @@ export default class LeftNav extends Component {
   }
 
   render() {
-    return (<Nav bsStyle="pills" stacked={true}>
+    return (
+      <Nav bsStyle="pills" stacked={true}>
       <NavItem eventKey={1} href="/home">
         My Skills
       </NavItem>
@@ -34,6 +35,7 @@ export default class LeftNav extends Component {
       <NavItem eventKey={3}>
         Link
       </NavItem>
-    </Nav>);
+    </Nav>
+  );
   }
 }

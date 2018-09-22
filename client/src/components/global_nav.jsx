@@ -31,6 +31,7 @@ export default class GlobalNav extends Component {
       APIUtil.resetInitialState()
       this.setState({signedOut: true})
     }).catch(error => {
+      APIUtil.resetInitialState()
     });
   }
 
@@ -42,10 +43,10 @@ export default class GlobalNav extends Component {
     if (this.state.signedOut) {
       return <Redirect to="/login"/>
     }
-    return (<Navbar collapseOnSelect={true}>
+    return (<Navbar fixedTop={true} collapseOnSelect={true}>
       <Navbar.Header>
         <Navbar.Brand className="navbar-margin">
-          <a href="/">Skillx</a>
+          <a href="/">Skillspire</a>
         </Navbar.Brand>
         <Navbar.Toggle/>
       </Navbar.Header>
@@ -65,6 +66,12 @@ export default class GlobalNav extends Component {
         <Nav className="navbar-margin" pullRight={true}>
           <NavItem eventKey={1} href="/">
             Home
+          </NavItem>
+          <NavItem eventKey={1} href="/my_skills">
+            Skills
+          </NavItem>
+          <NavItem eventKey={1} href="/">
+            Explore
           </NavItem>
         </Nav>
       </Navbar.Collapse>

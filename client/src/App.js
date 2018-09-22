@@ -6,6 +6,7 @@ import Home from './components/home';
 import Login from './components/login';
 import GlobalNav from './components/global_nav';
 import EditProfile from './components/edit_profile';
+import MySkills from './components/my_skills';
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 
 class App extends Component {
@@ -36,7 +37,7 @@ class App extends Component {
         <Route {...rest} render={matchProps => (
           <div className="main-container">
             <GlobalNav/>
-            <div className="container">
+            <div className="container home-container">
               <Component {...matchProps} />
             </div>
           </div>
@@ -49,6 +50,7 @@ class App extends Component {
           <div>
             <PrivateRoute exact path="/" component={ Home } />
             <PrivateRoute path="/edit_profile" component={ EditProfile } />
+            <PrivateRoute path="/my_skills" component={ MySkills } />
             <Route path="/login" component={ Login } />
             <Route path="/sign_up" component={ SignUp } />
           </div>

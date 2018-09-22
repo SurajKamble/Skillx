@@ -31,7 +31,9 @@ export default class Home extends Component {
     this.state = {
       allSkills: [],
       selectedSkills: [],
-      show: true
+      show: true,
+      allSkillsDisabled: [],
+      allSkillsEnabled: []
     };
   }
 
@@ -40,11 +42,8 @@ export default class Home extends Component {
   }
 
   addSkills() {
-    console.log(this.state.selectedSkills);
     this.state.selectedSkills = this.state.selectedSkills.map(skill_data => skill_data.value);
-    console.log(this.state.selectedSkills);
     APIUtil.addSkills(this.state.selectedSkills).then(response => {
-      console.log(response)
       this.setState({show: false});
     }).catch(error => {
       console.log(error.response);
@@ -53,9 +52,14 @@ export default class Home extends Component {
 
   getAllSkills() {
     APIUtil.getSkills().then(response => {
-      console.log(response)
       this.setState({
         allSkills: response.data.map(skill => ({value: skill.id, label: skill.name}))
+      })
+      this.setState({
+        allSkillsEnabled: this.state.allSkills
+      })
+      this.setState({
+        allSkillsDisabled: response.data.map(skill => ({value: skill.id, label: skill.name, isDisabled: true}))
       })
     }).catch(error => {
       console.log(error)
@@ -67,7 +71,17 @@ export default class Home extends Component {
   }
 
   handleChange(event) {
-    this.setState({selectedSkills: event});
+    if (event.length < 3) {
+      this.setState({selectedSkills: event});
+      this.setState({
+        allSkills: this.state.allSkillsEnabled
+      })
+    } else {
+      this.setState({selectedSkills: event});
+      this.setState({
+        allSkills: this.state.allSkillsDisabled
+      })
+    }
   }
 
   render() {
@@ -160,7 +174,9 @@ export default class Home extends Component {
               </Modal.Header>
               <Modal.Body>
                 Select upto 3 of your most significant skills
-                <Select isMulti="isMulti" onChange={this.handleChange} name="colors" className="basic-multi-select" classNamePrefix="select" options={this.state.allSkills}/>
+                <Select isMulti="isMulti" onChange={this.handleChange} name="colors"
+                  className="basic-multi-select" classNamePrefix="select"
+                  options={this.state.allSkills}/>
               </Modal.Body>
               <Modal.Footer>
                 <Button className="black-button" onClick={this.addSkills}>Next</Button>

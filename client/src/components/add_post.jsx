@@ -43,9 +43,7 @@ export default class AddPost extends Component {
   }
 
   getUserSkills() {
-    APIUtil.getUserSkills().then(response => {
-      console.log("In response")
-      console.log(response)
+    APIUtil.getCurrentUserSkills().then(response => {
       this.setState({
         userSkills: response.data.map(skill => ({value: skill.id, label: skill.name}))
       })
@@ -55,8 +53,6 @@ export default class AddPost extends Component {
   }
 
   render() {
-    console.log("In add post");
-    console.log(this.state.userSkills);
     return (
       <div>
       <Panel >
@@ -76,7 +72,8 @@ export default class AddPost extends Component {
                 placeholder="Post links"></textarea>
           </Modal.Body>
           <Modal.Footer className="add-post-modal-footer">
-            <DropdownButton title="Skill" id="Skill" className="skill-dropdown">
+            <Button className="black-button start-project">Starting a new project?</Button>
+            <DropdownButton title="Project" id="Project" className="common-dropdown">
               <MenuItem eventKey="1">Action</MenuItem>
               <MenuItem eventKey="2">Another action</MenuItem>
               <MenuItem eventKey="3">
@@ -85,7 +82,16 @@ export default class AddPost extends Component {
               <MenuItem divider />
               <MenuItem eventKey="4">Separated link</MenuItem>
             </DropdownButton>
-            <Button className="black-button">Add Post</Button>
+            <DropdownButton title="Skill" id="Skill" className="common-dropdown">
+              <MenuItem eventKey="1">Action</MenuItem>
+              <MenuItem eventKey="2">Another action</MenuItem>
+              <MenuItem eventKey="3">
+                Active Item
+              </MenuItem>
+              <MenuItem divider />
+              <MenuItem eventKey="4">Separated link</MenuItem>
+            </DropdownButton>
+            <Button bsStyle="primary">Add Post</Button>
           </Modal.Footer>
         </Modal>
       </div>

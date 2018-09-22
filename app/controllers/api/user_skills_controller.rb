@@ -2,14 +2,13 @@ class Api::UserSkillsController < ApplicationController
   before_action :authenticate_api_user!
 
   def index
-    byebug
-    @user_skills = UserSkill.where(user_id: params[:id])
+    @user_skills = UserSkill.where(user_id: current_api_user.id)
     json_response(@user_skills)
   end
 
   def create
     user_skill_params[:skill_ids].map do |skill_id|
-      @user_skill = UserSkill.create(user_id: params[:user_id], skill_id: skill_id)
+      @user_skill = UserSkill.create(user_id: params[:user_id], skill_id: skill_id, skill_name: Skill.find(skill_id).name)
       unless @user_skill.save
         json_response(@user_skill.errors, 422) and return
       end

@@ -17,17 +17,20 @@ export function login(user) {
     });
 }
 
-export function getUserSkills(user) {
-  var userData = {
-    params: {
-      'user_id': localStorage.getItem("user_id")
-    }
-  }
-  return axios.get("/api/user_skills", userData, getHeaders());
+export function getCurrentUserSkills() {
+  return axios.get("/api/user_skills", getHeaders());
+}
+
+export function getSkillName(skill_id) {
+  return axios.get("api/skills/" + skill_id, getHeaders());
 }
 
 export function getSkills() {
   return axios.get("api/skills", getHeaders());
+}
+
+export function getUserSkillData(user_skill_id) {
+  return axios.get("api/user_skills/" + user_skill_id, getHeaders());
 }
 
 export function addSkills(skill_ids) {
