@@ -179,7 +179,7 @@ export default class Home extends Component {
                   options={this.state.allSkills}/>
               </Modal.Body>
               <Modal.Footer>
-                <Button className="black-button" onClick={this.addSkills}>Next</Button>
+                <button className="btn black-button" onClick={this.addSkills}>Next</button>
               </Modal.Footer>
             </Modal>
           </div>

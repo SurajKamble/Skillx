@@ -33,13 +33,23 @@ export function getUserSkillData(user_skill_id) {
   return axios.get("api/user_skills/" + user_skill_id, getHeaders());
 }
 
+export function getAllUserSkillPosts(user_skill_id) {
+  return axios.get("api/user_skills/" + user_skill_id + "/posts", getHeaders());
+}
+
+export function addUserSkillPost(user_skill_id, content) {
+  var postData = {
+    'content': content
+  }
+  return axios.post("api/user_skills/" + user_skill_id + "/posts", postData, getHeaders());
+}
+
 export function addSkills(skill_ids) {
   var userData = {
     'user_id': localStorage.getItem("user_id"),
     'skill_ids': skill_ids
   }
-  var headers = getHeaders()
-  return axios.post("api/user_skills", userData, headers);
+  return axios.post("api/user_skills", userData, getHeaders());
 }
 
 export function signOut() {
