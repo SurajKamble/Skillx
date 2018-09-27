@@ -13,7 +13,7 @@ import {
   InputGroup
 } from "react-bootstrap";
 import {Grid, Row, Col} from "react-bootstrap";
-import "./sign_up.css";
+import "./global_nav.css";
 import * as APIUtil from "../util/api_util";
 import {Redirect, Link} from 'react-router-dom';
 
@@ -41,7 +41,7 @@ export default class GlobalNav extends Component {
 
   render() {
     if (this.state.signedOut) {
-      return <Redirect to="/login"/>
+      return <Redirect to="/register"/>
     }
     return (<Navbar fixedTop={true} collapseOnSelect={true}>
       <Navbar.Header>

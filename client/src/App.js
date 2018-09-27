@@ -7,6 +7,7 @@ import Login from './components/login';
 import GlobalNav from './components/global_nav';
 import EditProfile from './components/edit_profile';
 import MySkills from './components/my_skills';
+import RegistrationPage from './components/registration_page';
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 
 class App extends Component {
@@ -24,7 +25,7 @@ class App extends Component {
           ) : (
             <Redirect
               to={{
-                pathname: "/login"
+                pathname: "/register"
               }}
             />
           )
@@ -47,12 +48,11 @@ class App extends Component {
 
     return (
         <Router>
-          <div>
+          <div id="main-top-div">
             <PrivateRoute exact path="/" component={ Home } />
             <PrivateRoute path="/edit_profile" component={ EditProfile } />
             <PrivateRoute path="/my_skills" component={ MySkills } />
-            <Route path="/login" component={ Login } />
-            <Route path="/sign_up" component={ SignUp } />
+            <Route path="/register" component={ RegistrationPage } />
           </div>
         </Router>
     );

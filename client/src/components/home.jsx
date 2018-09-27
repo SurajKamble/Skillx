@@ -104,66 +104,6 @@ export default class Home extends Component {
             </Panel.Heading>
             <Panel.Body>Panel content</Panel.Body>
           </Panel>
-          <Panel>
-            <Panel.Heading>
-              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>Panel content</Panel.Body>
-          </Panel>
-          <Panel>
-            <Panel.Heading>
-              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>Panel content</Panel.Body>
-          </Panel>
-          <Panel>
-            <Panel.Heading>
-              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>Panel content</Panel.Body>
-          </Panel>
-          <Panel>
-            <Panel.Heading>
-              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>Panel content</Panel.Body>
-          </Panel>
-          <Panel>
-            <Panel.Heading>
-              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>Panel content</Panel.Body>
-          </Panel>
-          <Panel>
-            <Panel.Heading>
-              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>Panel content</Panel.Body>
-          </Panel>
-          <Panel>
-            <Panel.Heading>
-              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>Panel content</Panel.Body>
-          </Panel>
-          <Panel>
-            <Panel.Heading>
-              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>Panel content</Panel.Body>
-          </Panel>
-          <Panel>
-            <Panel.Heading>
-              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>Panel content</Panel.Body>
-          </Panel>
-          <Panel>
-            <Panel.Heading>
-              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>Panel content</Panel.Body>
-          </Panel>
         </div>
           <div className="modal-container">
             <Modal show={this.state.show} onHide={this.handleHide} container={this} aria-labelledby="contained-modal-title">

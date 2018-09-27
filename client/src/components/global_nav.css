@@ -1,0 +1,55 @@
+.searchForm {
+  width: 50%;
+}
+
+.searchBar {
+  width: 80% !important;
+}
+
+.searchInput {
+  background-image:url(../search-icon.png);
+  background-repeat: no-repeat;
+  background-position: 98% 50%;
+}
+
+.searchBar .form-control {
+  width: 80% !important;
+  border: 1px solid #e4e4e4;
+  min-height: 30px;
+  height: 30px;
+  color: #808080;
+  box-shadow: inset 0 1px 1px rgba(200,200,200,0.3);
+  padding-left: 8px;
+}
+
+.navbar-form {
+  padding-top: 1px;
+  padding-left: 0px;
+}
+
+.navbar {
+  border: 0px;
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.navbar .container {
+  margin-top: 5px;
+}
+
+.navbar-default {
+  border-radius: 0px;
+  background-image: linear-gradient(to bottom,#fff 0,#fff 100%);
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover,
+ .navbar-default .navbar-nav>li>a, .navbar-default .navbar-brand,
+ .navbar-default .navbar-brand:hover {
+    color: black;
+}
+
+.navbar {
+  -webkit-box-shadow: -1px 3px 4px -3px rgba(211,211,211,1);
+  -moz-box-shadow: -1px 3px 4px -3px rgba(211,211,211,1);
+  box-shadow: -1px 3px 4px -3px rgba(211,211,211,1);
+}

@@ -1,0 +1,108 @@
+.register-container {
+  min-height: 100%;
+  height:auto !important;
+  height: 100%;
+  overflow-y: hidden;
+  background: rgb(52,52,57);
+  background: linear-gradient(90deg, rgba(52,52,57,1) 0%, rgba(51,51,68,1) 45%, rgba(14,78,101,1) 100%);
+}
+
+.registration-row {
+
+}
+
+.social-btn {
+  padding: 0px 30px;
+}
+
+.social-btn .btn {
+  margin: 10px 0;
+  font-size: 15px;
+  text-align: left;
+  line-height: 24px;
+}
+
+.social-btn .btn i {
+  float: left;
+  margin: 4px 15px 0 5px;
+  min-width: 15px;
+}
+
+.form-control {
+  height: 40px;
+  box-shadow: none;
+  color: #969fa4;
+}
+
+.title-header {
+  text-align: center;
+  color: #fff;
+}
+
+#firstname {
+  padding-right: 5px;
+}
+
+#lastname {
+  padding-left: 5px;
+}
+
+.sign-up-header {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 25px;
+}
+
+@media (max-width: 768px) {
+  .registration-form {
+    float: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .registration-form {
+    float: none;
+  }
+}
+
+.registration-form {
+  width: 400px;
+  margin: 30px auto;
+  padding: 30px 0;
+}
+
+.description-text {
+  height: 500px;
+}
+
+.registration-form .register_header {
+  color: #827f7f;
+  margin: 0 0 0;
+  font-size: 15px;
+  position: relative;
+  text-align: center;
+}
+
+.registration-form .register_header:before, .registration-form .register_header:after {
+  content: "";
+  height: 1px;
+  width: 30%;
+  background: #d4d4d4;
+  position: absolute;
+  top: 50%;
+}
+
+.registration-form .register_header:before {
+  left: 0;
+}
+
+.registration-form .register_header:after {
+  right: 0;
+}
+
+.registration-form form {
+  color: #999;
+  border-radius: 3px;
+  margin-bottom: 15px;
+  padding: 15px 30px;
+}

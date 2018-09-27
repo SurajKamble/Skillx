@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { Grid, Row, Col } from "react-bootstrap";
-import "./sign_up.css";
+import "./registration.css";
 import * as APIUtil from "../util/api_util";
 import { Redirect, Link } from 'react-router-dom';
 
@@ -35,6 +35,7 @@ export default class SignUp extends Component {
       APIUtil.setInitialState(response)
       console.log(response)
       this.setState({ isAuthenticated: true });
+      this.props.setAuthenticated();
     }).catch(error => {
       console.log(error.response)
       const errors = error.response.data.errors;
@@ -57,9 +58,6 @@ export default class SignUp extends Component {
   }
 
   render() {
-    if (localStorage.getItem("isAuthenticated") === "true" || this.state.isAuthenticated) {
-      return <Redirect to="/" />;
-    }
     const errorWarning = <i className="material-icons">warning</i>;
     const fErr = this.state.firstnameErr ? errorWarning : "";
     const lErr = this.state.lastnameErr ? errorWarning : "";
@@ -68,35 +66,32 @@ export default class SignUp extends Component {
     const pcErr = this.state.password_confirmationErr ? errorWarning : "";
 
     return (
-      <div className="container">
-        <div className="signup-form v-center">
+        <div className="signup-form-div">
           <form onSubmit={this.handleSubmit}>
-            <h2 className="text-center">Skillx</h2>
-            <h2 className="register_header">Register</h2>
             <div className="form-group">
               <div className="row">
-                <div className="col-xs-6">
+                <div className="col-xs-6" id="firstname">
                   <input
                     type="firstname"
                     name="firstname"
                     value={this.state.firstname}
                     onChange={this.handleInput}
                     className="form-control"
-                    id="firstname"
+
                     placeholder="First Name"
                   />
                   <div className="error-popup first-name-errors">{fErr}
                     <div className="error-text">{this.state.firstnameErr}</div>
                   </div>
                 </div>
-                <div className="col-xs-6">
+                <div className="col-xs-6" id="lastname">
                   <input
                     type="lastname"
                     name="lastname"
                     value={this.state.lastname}
                     onChange={this.handleInput}
                     className="form-control"
-                    id="lastname"
+
                     placeholder="Last Name"
                   />
                 <div className="error-popup first-name-errors">{lErr}
@@ -155,10 +150,9 @@ export default class SignUp extends Component {
                 Register Now
               </button>
             </div>
-            <div className="text-center">Already have an account? <Link to="/login">Sign in</Link></div>
+            <div className="text-center">Already have an account? <a href="#" onClick={this.props.togglePage}>Sign In</a></div>
           </form>
         </div>
-      </div>
     );
   }
 }
