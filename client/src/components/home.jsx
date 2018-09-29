@@ -89,7 +89,7 @@ export default class Home extends Component {
       <Col xsHidden sm={2} md={2} lg={2}>
         <LeftNav/>
       </Col>
-      <Col xs={12} sm={7} md={7} lg={7}>
+      <Col xs={12} sm={8} md={8} lg={8}>
         <div>
           <AddPost/>
           <Panel>
@@ -124,7 +124,7 @@ export default class Home extends Component {
             </Modal>
           </div>
       </Col>
-      <Col xsHidden sm={3} md={3} lg={3}>
+      <Col xsHidden sm={2} md={2} lg={2}>
       </Col>
     </Row>);
   }

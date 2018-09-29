@@ -67,13 +67,13 @@ export default class MySkills extends Component {
 
   render() {
     return (
-      <Row className="show-grid">
+      <Row>
         <Col xsHidden sm={3} md={3} lg={3}>
           <div>
             <div className="my-skills-left-nav-header">
               <h4>My Skills</h4>
             </div>
-            <Nav bsStyle="pills" stacked={true}
+            <Nav className="my-skills-left-nav" bsStyle="pills" stacked={true}
               activeKey={this.state.selectedSkill}
               onSelect={this.handleSelect}>
               {this.navSkills()}

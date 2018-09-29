@@ -48,14 +48,14 @@ export default class GlobalNav extends Component {
         <Navbar.Brand className="navbar-margin">
           <a href="/">Skillspire</a>
         </Navbar.Brand>
-        <Navbar.Toggle/>
-      </Navbar.Header>
-      <Navbar.Collapse>
         <Navbar.Form pullLeft={true} className="searchForm">
           <FormGroup className="searchBar">
             <FormControl className="searchInput" type="text" placeholder="Search"/>
           </FormGroup>
         </Navbar.Form>
+        <Navbar.Toggle/>
+      </Navbar.Header>
+      <Navbar.Collapse>
         <Nav className="navbar-margin" pullRight={true}>
           <NavDropdown eventKey={3} title={localStorage.getItem("firstname")} id="basic-nav-dropdown" pullRight={true}>
             <MenuItem eventKey={3.1} href="/edit_profile">Edit Profile</MenuItem>

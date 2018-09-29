@@ -39,20 +39,18 @@ export default class SkillPosts extends Component {
   }
 
   handleShow() {
-    this.setState({ show: true });
+    this.setState({show: true});
   }
 
   handleClose() {
-    this.setState({ show: false });
+    this.setState({show: false});
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.selectedSkill === prevState.selectedSkill) {
       return null;
     }
-    return {
-      userSkillId: nextProps.selectedSkill
-    };
+    return {userSkillId: nextProps.selectedSkill};
   }
 
   componentDidUpdate(prevProps) {
@@ -64,9 +62,7 @@ export default class SkillPosts extends Component {
 
   getSkillData() {
     APIUtil.getUserSkillData(this.state.userSkillId).then(response => {
-      this.setState({
-        skillName: response.data.skill_name
-      });
+      this.setState({skillName: response.data.skill_name});
     }).catch(error => {
       console.log(error.response);
     });
@@ -74,9 +70,7 @@ export default class SkillPosts extends Component {
 
   getAllUserSkillPosts() {
     APIUtil.getAllUserSkillPosts(this.state.userSkillId).then(response => {
-      this.setState({
-        allUserSkillPosts: response.data
-      });
+      this.setState({allUserSkillPosts: response.data});
       console.log(response);
     }).catch(error => {
       console.log(error.response);
@@ -84,25 +78,26 @@ export default class SkillPosts extends Component {
   }
 
   render() {
-    return (
+    return (<div>
       <div>
-        <div>
-          <h3 className="skill-header">{this.state.skillName}</h3>
-        </div>
-        <div className='myskills-btn-grp'>
-          <div className="add-post-div">
-            <button className="btn add-post-btn black-button" onClick={this.handleShow}>Add a post</button>
-          </div>
-          <AddPostModal show={this.state.show}
-            handleClose={this.handleClose}
-            updateUserSkillPosts={this.getAllUserSkillPosts}/>
-          <div className="btn-sep-div"></div>
-          <div className="add-project-div">
-            <button className="btn add-project-btn black-border-btn">Start a project</button>
-          </div>
-        </div>
-          <PostsContainer allUserSkillPosts={this.state.allUserSkillPosts}/>
+        <h3 className="skill-header">{this.state.skillName}</h3>
       </div>
-    )
+      <div className="container-fluid myskills-btn-grp">
+        <Row>
+          <Col xs={6} sm={6} md={5} lg={5}>
+            <button className="btn add-post-btn" onClick={this.handleShow}>New Post or Project</button>
+          </Col>
+          <Col xs={6} xsOffset={0} sm={6} smOffset={0} md={5} mdOffset={2} lg={5} lgOffset={2}>
+            <form>
+              <FormGroup>
+                <FormControl type="text" className="find-projects" placeholder="Find Projects, Posts"/>
+              </FormGroup>
+            </form>
+          </Col>
+        </Row>
+      </div>
+      <AddPostModal show={this.state.show} handleClose={this.handleClose} updateUserSkillPosts={this.getAllUserSkillPosts}/>
+      <PostsContainer allUserSkillPosts={this.state.allUserSkillPosts}/>
+    </div>)
   }
 }

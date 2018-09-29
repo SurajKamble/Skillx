@@ -54,8 +54,8 @@ export default class AddPost extends Component {
 
   render() {
     return (
-      <div>
-      <Panel >
+      <div className="add-post-btn-div">
+      <Panel>
         <Panel.Body className="add-post-panel">
           <a role="button" className="add-post-link" href="#" onClick={this.handleShow}>How did you up your skills today?</a>
         </Panel.Body>
