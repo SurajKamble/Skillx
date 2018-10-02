@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   # t.timestamps
   # add_index :posts, %i[postable_id postable_type]
 
-  validates :content, presence: true
+  has_one :post_content
 
   belongs_to :postable, polymorphic: true
 end

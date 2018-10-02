@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180901211422) do
+ActiveRecord::Schema.define(version: 20180930194820) do
+
+  create_table "link_previews", force: :cascade do |t|
+    t.integer "para_id"
+    t.text "url"
+    t.text "title"
+    t.text "description"
+    t.text "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["para_id"], name: "index_link_previews_on_para_id"
+  end
+
+  create_table "paras", force: :cascade do |t|
+    t.integer "post_content_id"
+    t.integer "position"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_content_id"], name: "index_paras_on_post_content_id"
+  end
+
+  create_table "post_contents", force: :cascade do |t|
+    t.integer "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_post_contents_on_post_id"
+  end
 
   create_table "posts", force: :cascade do |t|
-    t.text "content"
     t.integer "postable_id"
     t.string "postable_type"
     t.datetime "created_at", null: false

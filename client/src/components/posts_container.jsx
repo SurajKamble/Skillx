@@ -43,9 +43,7 @@ export default class PostsContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("In update");
     if (this.props.allUserSkillPosts !== prevProps.allUserSkillPosts) {
-      console.log("In if");
       this.createAllPosts();
     }
   }

@@ -31,15 +31,6 @@ export default class Post extends Component {
   }
 
   render() {
-    var imageName = 'http://getbootstrap.com/docs/4.1/assets/brand/bootstrap-social.png'
-
-    return (<Panel key={this.props.id}>
-      <Panel.Heading>
-        <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
-      </Panel.Heading>
-      <Panel.Body>
-        <img src={imageName}/> {this.state.post.content}
-      </Panel.Body>
-    </Panel>);
+    
   }
 }
