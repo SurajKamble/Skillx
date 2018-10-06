@@ -8,7 +8,6 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.create(firstname: params[:firstname], lastname: params[:lastname], email: params[:email])
-    # byebug
     @user.save ? json_response(@user) : json_response(@user.errors, 404)
   end
 

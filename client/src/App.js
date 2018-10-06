@@ -37,7 +37,8 @@ class App extends Component {
       return (
         <Route {...rest} render={matchProps => (
           <div className="main-container">
-            <GlobalNav/>
+            {console.log(matchProps)}
+            <GlobalNav {...matchProps} />
             <div className="container home-container">
               <Component {...matchProps} />
             </div>
@@ -52,6 +53,7 @@ class App extends Component {
             <PrivateRoute exact path="/" component={ Home } />
             <PrivateRoute path="/edit_profile" component={ EditProfile } />
             <PrivateRoute path="/my_skills" component={ MySkills } />
+            <PrivateRoute path="/explore" component={ MySkills } />
             <Route path="/register" component={ RegistrationPage } />
           </div>
         </Router>

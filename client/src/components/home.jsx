@@ -89,7 +89,7 @@ export default class Home extends Component {
       <Col xsHidden sm={2} md={2} lg={2}>
         <LeftNav/>
       </Col>
-      <Col xs={12} sm={8} md={8} lg={8}>
+      <Col xs={12} sm={8} md={8} lg={8} className="center-col">
         <div>
           <AddPost/>
           <Panel>

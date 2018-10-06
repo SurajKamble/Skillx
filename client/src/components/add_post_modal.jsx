@@ -98,11 +98,19 @@ export default class AddPostModal extends Component {
         <textarea autoFocus={true} className="add-post-textarea" type="text" rows="1" title=""
           placeholder="Add resources you found helpful improving your skills"
           onChange={this.updateContent}></textarea>
+          <input
+            type="addLink"
+            name="addLink"
+            value={this.state.link}
+            onChange={this.handleInput}
+            className="form-control add-link-input"
+            placeholder="Add Link"
+          />
       </Modal.Body>
       <Modal.Footer className="add-post-modal-footer">
         <Select isSearchable={true} className="select-skill" classNamePrefix="select-skill" placeholder="Project" value={this.state.selectedUserSkill} onChange={this.selectSkill} options={this.state.allUserSkills}/>
         <Select isSearchable={false} className="select-skill" classNamePrefix="select-skill" placeholder="Skill" value={this.state.selectedUserSkill} onChange={this.selectSkill} options={this.state.allUserSkills}/>
-        <button className="btn blue-button" onClick={this.addPost}>Add</button>
+        <button className="btn blue-button" onClick={this.addPost}>Post</button>
       </Modal.Footer>
     </Modal>);
   }

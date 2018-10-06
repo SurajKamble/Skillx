@@ -9,4 +9,8 @@ class Post < ApplicationRecord
   has_one :post_content
 
   belongs_to :postable, polymorphic: true
+
+  def get_post_date
+    
+  end
 end

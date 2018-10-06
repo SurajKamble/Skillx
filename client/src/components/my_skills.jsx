@@ -68,7 +68,7 @@ export default class MySkills extends Component {
   render() {
     return (
       <Row>
-        <Col xsHidden sm={3} md={3} lg={3}>
+        <Col xsHidden sm={2} md={2} lg={2}>
           <div>
             <div className="my-skills-left-nav-header">
               <h4>My Skills</h4>
@@ -80,7 +80,7 @@ export default class MySkills extends Component {
             </Nav>
           </div>
         </Col>
-        <Col xs={12} sm={7} md={7} lg={7}>
+        <Col xs={12} sm={8} md={8} lg={8} className="center-col">
           <SkillPosts selectedSkill={this.state.selectedSkill}/>
         </Col>
         <Col xsHidden sm={2} md={2} lg={2}>

@@ -111,3 +111,7 @@
 .navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse {
   padding-left: 30px;
 }
+
+.nav-item-active {
+  border-bottom: 2px solid black;
+}

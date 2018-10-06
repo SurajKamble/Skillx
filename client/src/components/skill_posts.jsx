@@ -84,10 +84,10 @@ export default class SkillPosts extends Component {
       </div>
       <div className="container-fluid myskills-btn-grp">
         <Row>
-          <Col xs={6} sm={6} md={5} lg={5}>
+          <Col xs={5} sm={5} md={5} lg={5}>
             <button className="btn add-post-btn" onClick={this.handleShow}>New Post or Project</button>
           </Col>
-          <Col xs={6} xsOffset={0} sm={6} smOffset={0} md={5} mdOffset={2} lg={5} lgOffset={2}>
+          <Col xs={7} xsOffset={0} sm={7} smOffset={0} md={7} lg={7}>
             <form>
               <FormGroup>
                 <FormControl type="text" className="find-projects" placeholder="Find Projects, Posts"/>

@@ -21,9 +21,29 @@ export default class GlobalNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      signedOut: false
+      signedOut: false,
+      homeActive: '',
+      mySkillsActive: '',
+      exploreActive: ''
     }
     this.signOut = this.signOut.bind(this);
+    this.setHomeActive = this.setHomeActive.bind(this);
+    this.setMySkillsActive = this.setMySkillsActive.bind(this);
+    this.setExploreActive = this.setExploreActive.bind(this);
+    console.log("In const");
+  }
+
+  componentDidMount() {
+    if (this.props.location.pathname === "/") {
+      console.log("In if");
+      this.setHomeActive();
+    }
+    if (this.props.location.pathname === "/my_skills") {
+      this.setMySkillsActive();
+    }
+    if (this.props.location.pathname === "/explore") {
+      this.setExploreActive();
+    }
   }
 
   signOut() {
@@ -37,6 +57,31 @@ export default class GlobalNav extends Component {
 
   home() {
     this.setState(prevState => prevState)
+  }
+
+  setHomeActive() {
+    console.log("IN nav item");
+    this.setState({
+      homeActive: 'active nav-item-active',
+      mySkillsActive: '',
+      exploreActive: ''
+    })
+  }
+
+  setMySkillsActive() {
+    this.setState({
+      homeActive: '',
+      mySkillsActive: 'active nav-item-active',
+      exploreActive: ''
+    })
+  }
+
+  setExploreActive() {
+    this.setState({
+      homeActive: '',
+      mySkillsActive: '',
+      exploreActive: 'active nav-item-active'
+    })
   }
 
   render() {
@@ -64,13 +109,13 @@ export default class GlobalNav extends Component {
           </NavDropdown>
         </Nav>
         <Nav className="navbar-margin" pullRight={true}>
-          <NavItem eventKey={1} href="/">
+          <NavItem eventKey={1} href="/" className={this.state.homeActive}>
             Home
           </NavItem>
-          <NavItem eventKey={1} href="/my_skills">
+          <NavItem eventKey={1} href="/my_skills" className={this.state.mySkillsActive}>
             Skills
           </NavItem>
-          <NavItem eventKey={1} href="/">
+          <NavItem eventKey={1} href="/explore" className={this.state.exploreActive}>
             Explore
           </NavItem>
         </Nav>

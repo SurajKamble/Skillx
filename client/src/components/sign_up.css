@@ -125,11 +125,8 @@ html, body {
 }
 
 .my-skills-left-nav>li>a {
-  height: 25px;
-  line-height: 15px;
   color: #808080;
   padding: 5px 5px;
-  margin-bottom: 8px;
   background-color: inherit;
 }
 
@@ -153,11 +150,15 @@ html, body {
     padding-left: 95px;
   }
   .add-post-textarea {
-    height: 100px;
+    height: 60px;
     width: 100%;
   }
   .add-post-modal-footer {
     margin-top: 10px;
+  }
+
+  .center-col {
+    padding: 0 30px 0 30px;
   }
 }
 
@@ -282,7 +283,7 @@ html, body {
   background-repeat: no-repeat;
   background-position: 95% 50%;
   color: black;
-  padding-left: 10%;
+  padding-left: 7%;
 }
 
 .btn:focus, .btn:active {
@@ -355,4 +356,8 @@ html, body {
   border-color: #fff !important;
   border-width: 0px !important;
   box-shadow: #fff !important;
+}
+
+.add-link-input {
+  width: 100%;
 }
