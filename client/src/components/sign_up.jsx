@@ -32,12 +32,10 @@ export default class SignUp extends Component {
     const user = Object.assign({}, this.state);
 
     APIUtil.signUp(user).then(response => {
-      APIUtil.setInitialState(response)
-      console.log(response)
+      APIUtil.setInitialState(response.headers, response.data.data)
       this.setState({ isAuthenticated: true });
       this.props.setAuthenticated();
     }).catch(error => {
-      console.log(error.response)
       const errors = error.response.data.errors;
         this.setState({
           firstnameErr: errors.firstname,

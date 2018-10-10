@@ -1,5 +1,6 @@
 class Api::PostsController < ApplicationController
   before_action :authenticate_api_user!
+  # after_action :skip_session
   require 'link_thumbnailer'
 
   def index

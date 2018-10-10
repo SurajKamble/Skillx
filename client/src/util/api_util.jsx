@@ -17,6 +17,10 @@ export function login(user) {
     });
 }
 
+export function googleOauth2(response) {
+  return axios.post("/api/auth/oauth", response.profileObj);
+}
+
 export function getCurrentUserSkills() {
   return axios.get("/api/user_skills", getHeaders());
 }
@@ -68,16 +72,16 @@ export function resetInitialState() {
   localStorage.removeItem("user_id");
 }
 
-export function setInitialState(response) {
+export function setInitialState(response_headers, response_data) {
   localStorage.setItem("isAuthenticated", true);
-  localStorage.setItem("client", response.headers['client']);
-  localStorage.setItem("access-token", response.headers['access-token']);
-  localStorage.setItem("uid", response.headers['uid']);
-  localStorage.setItem("expiry", response.headers['expiry']);
-  localStorage.setItem("email", response.data.data['email']);
-  localStorage.setItem("firstname", response.data.data['firstname']);
-  localStorage.setItem("lastname", response.data.data['lastname']);
-  localStorage.setItem("user_id", response.data.data['id']);
+  localStorage.setItem("client", response_headers['client']);
+  localStorage.setItem("access-token", response_headers['access-token']);
+  localStorage.setItem("uid", response_headers['uid']);
+  localStorage.setItem("expiry", response_headers['expiry']);
+  localStorage.setItem("email", response_data['email']);
+  localStorage.setItem("firstname", response_data['firstname']);
+  localStorage.setItem("lastname", response_data['lastname']);
+  localStorage.setItem("user_id", response_data['id']);
 }
 
 function getHeaders() {

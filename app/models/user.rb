@@ -5,8 +5,8 @@ class User < ApplicationRecord
 
   # Include default devise modules.
   devise :database_authenticatable, :registerable,
-          :recoverable, :rememberable, :trackable, :validatable
-          # :confirmable, :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable
+  # :confirmable, :omniauthable
 
   include DeviseTokenAuth::Concerns::User
 
@@ -15,4 +15,15 @@ class User < ApplicationRecord
 
   has_many :user_skills
   has_many :skills, through: :user_skills
+
+  def self.create_user_for_google(data)
+    where(email: data['email']).first_or_initialize.tap do |user|
+      user.email = data['email']
+      user.firstname = data['givenName']
+      user.lastname = data['familyName']
+      user.password = Devise.friendly_token[0, 20]
+      user.password_confirmation = user.password
+      user.save!
+    end
+  end
 end

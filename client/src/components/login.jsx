@@ -20,7 +20,7 @@ export default class Login extends Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     APIUtil.login(user).then(response => {
-      APIUtil.setInitialState(response)
+      APIUtil.setInitialState(response.headers, response.data.data)
       this.setState({ isAuthenticated: true });
       this.props.setAuthenticated();
     }).catch(error => {

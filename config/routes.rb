@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   # devise_for :users
 
   namespace :api, defaults: {format: :json} do
-    mount_devise_token_auth_for 'User', at: 'auth'
+    mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks]
+
+    post 'auth/oauth', to:'authorization#get_authorization'
 
     resources :skills, only: [:index, :show]
 

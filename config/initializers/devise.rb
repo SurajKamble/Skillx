@@ -6,4 +6,6 @@ Devise.setup do |config|
   # middleware b/c rails-api does not include it.
   # See: https://stackoverflow.com/q/19600905/806956
   config.navigational_formats = [:json]
+  config.omniauth :google_oauth2, "126300833912-j5ka215q1of9ulptphkm2rb64ojannuk.apps.googleusercontent.com", "AGrpHdeKgy7kBO1WBs_JUuf3"
+
 end
