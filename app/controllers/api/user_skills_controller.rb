@@ -6,9 +6,10 @@ class Api::UserSkillsController < ApplicationController
     json_response(@user_skills)
   end
 
+  # Create UserSkills using the user_id and the skills selected by user.
   def create
     user_skill_params[:skill_ids].map do |skill_id|
-      @user_skill = UserSkill.create(user_id: params[:user_id], skill_id: skill_id, skill_name: Skill.find(skill_id).name)
+      @user_skill = UserSkill.create(user_id: params[:user_id], skill_id: skill_id)
       unless @user_skill.save
         json_response(@user_skill.errors, 422) and return
       end
@@ -26,6 +27,7 @@ class Api::UserSkillsController < ApplicationController
   end
 
   private
+  # Allow a user_id and a list of skill_ids selected by the user
   def user_skill_params
     params[:skill_ids] ||= []
     params.permit(:user_id, skill_ids: [])

@@ -7,10 +7,11 @@ class Post < ApplicationRecord
   # add_index :posts, %i[postable_id postable_type]
 
   has_one :post_content
+  has_one :link_preview
 
   belongs_to :postable, polymorphic: true
 
   def get_post_date
-    
+
   end
 end

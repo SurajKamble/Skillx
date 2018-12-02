@@ -71,6 +71,7 @@ export default class SkillPosts extends Component {
   getAllUserSkillPosts() {
     APIUtil.getAllUserSkillPosts(this.state.userSkillId).then(response => {
       this.setState({allUserSkillPosts: response.data});
+      console.log("In Posts: ");
       console.log(response);
     }).catch(error => {
       console.log(error.response);

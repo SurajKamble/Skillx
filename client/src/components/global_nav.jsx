@@ -102,7 +102,9 @@ export default class GlobalNav extends Component {
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav className="navbar-margin" pullRight={true}>
-          <NavDropdown eventKey={3} title={localStorage.getItem("firstname")} id="basic-nav-dropdown" pullRight={true}>
+          <NavDropdown eventKey={3}
+            title = {<img className="dropdown-display-picture" src={localStorage.getItem("display_picture")}/>}
+            id="basic-nav-dropdown" pullRight={true}>
             <MenuItem eventKey={3.1} href="/edit_profile">Edit Profile</MenuItem>
             <MenuItem divider={true}/>
             <MenuItem eventKey={3.3} onClick={this.signOut}>Sign out</MenuItem>

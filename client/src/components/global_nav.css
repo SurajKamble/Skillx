@@ -115,3 +115,8 @@
 .nav-item-active {
   border-bottom: 2px solid black;
 }
+
+.dropdown-display-picture {
+  border-radius: 50%;
+  height: 40px;
+}

@@ -10,30 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181010005402) do
+ActiveRecord::Schema.define(version: 2018_11_30_013108) do
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "link_previews", force: :cascade do |t|
-    t.integer "para_id"
+    t.integer "post_id"
     t.text "url"
     t.text "title"
     t.text "description"
     t.text "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["para_id"], name: "index_link_previews_on_para_id"
-  end
-
-  create_table "paras", force: :cascade do |t|
-    t.integer "post_content_id"
-    t.integer "position"
-    t.text "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_content_id"], name: "index_paras_on_post_content_id"
+    t.index ["post_id"], name: "index_link_previews_on_post_id"
   end
 
   create_table "post_contents", force: :cascade do |t|
     t.integer "post_id"
+    t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_post_contents_on_post_id"

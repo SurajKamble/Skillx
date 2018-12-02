@@ -28,12 +28,14 @@ export default class AddPostModal extends Component {
     this.selectSkill = this.selectSkill.bind(this);
     this.addPost = this.addPost.bind(this);
     this.updateContent = this.updateContent.bind(this);
+    this.updateLink = this.updateLink.bind(this);
 
     this.state = {
       show: false,
       allUserSkills: [],
       selectedUserSkill: '',
-      postContent: ''
+      postContent: '',
+      link: ''
     };
   }
 
@@ -69,8 +71,13 @@ export default class AddPostModal extends Component {
     this.setState({selectedUserSkill: selectedSkill})
   }
 
+  updateLink(event) {
+    this.setState({link: event.target.value})
+  }
+
   addPost() {
-    APIUtil.addUserSkillPost(this.state.selectedUserSkill.value, this.state.postContent).then(response => {
+    APIUtil.addUserSkillPost(this.state.selectedUserSkill.value,
+      this.state.postContent, this.state.link).then(response => {
       this.handleModalClose();
       this.props.updateUserSkillPosts();
     }).catch(error => {
@@ -102,7 +109,7 @@ export default class AddPostModal extends Component {
             type="addLink"
             name="addLink"
             value={this.state.link}
-            onChange={this.handleInput}
+            onChange={this.updateLink}
             className="form-control add-link-input"
             placeholder="Add Link"
           />

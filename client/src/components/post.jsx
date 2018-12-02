@@ -28,17 +28,13 @@ export default class Post extends Component {
     this.state = {
       post: this.props.post
     };
-    console.log("In Post");
-    console.log(this.state.post);
   }
 
   render() {
-    var post = this.state.post;
-
     return (<Panel key={this.props.id} className="post-panel">
       <div className="post-header-div">
         <div className="post-header-image-div">
-          <img className="post-header-image" src="https://cdn.merchantmaverick.com/wp-content/uploads/2018/06/Best-credit-card-processing-companies-award.jpg"></img>
+          <img className="post-header-image" src={localStorage.getItem("display_picture")}></img>
         </div>
         <div className="post-header-username-div">
           <h5 className="post-header-username">{localStorage.getItem("firstname") + " " + localStorage.getItem("lastname")}</h5>
@@ -46,17 +42,17 @@ export default class Post extends Component {
       </div>
       <div className="post-content">
         <div>
-          {this.state.post.text}
+          {this.state.post.post_content.text}
         </div>
-        <a href={this.state.post.url} target="_blank" className="link-preview-link">
+        <a href={this.state.post.link_preview.url} target="_blank" className="link-preview-link">
           <div className="post-link-preview">
             <div className="post-link-preview-img-div">
-              <img className="post-link-preview-img" src={post.image_url}/>
+              <img className="post-link-preview-img" src={this.state.post.link_preview.image_url}/>
             </div>
             <div className="link-preview-content">
-              <div className="text-bold link-preview-title">{this.state.post.title}</div>
+              <div className="text-bold link-preview-title">{this.state.post.link_preview.title}</div>
               <div className="link-preview-desc">
-                {this.state.post.description}
+                {this.state.post.link_preview.description}
               </div>
             </div>
           </div>

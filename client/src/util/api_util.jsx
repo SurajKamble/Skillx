@@ -41,9 +41,18 @@ export function getAllUserSkillPosts(user_skill_id) {
   return axios.get("api/user_skills/" + user_skill_id + "/posts", getHeaders());
 }
 
-export function addUserSkillPost(user_skill_id, content) {
+export function getAllExplorePosts() {
+  return axios.get("api/explore", getHeaders());
+}
+
+export function getAllHomePosts() {
+  return axios.get("api/home", getHeaders());
+}
+
+export function addUserSkillPost(user_skill_id, content, link) {
   var postData = {
-    'content': content
+    'content': content,
+    'link': link
   }
   return axios.post("api/user_skills/" + user_skill_id + "/posts", postData, getHeaders());
 }
@@ -70,9 +79,13 @@ export function resetInitialState() {
   localStorage.removeItem("firstname");
   localStorage.removeItem("lastname");
   localStorage.removeItem("user_id");
+  localStorage.removeItem("display_picture");
 }
 
 export function setInitialState(response_headers, response_data) {
+  console.log("In setInitialState");
+  console.log(response_headers);
+  console.log(response_data);
   localStorage.setItem("isAuthenticated", true);
   localStorage.setItem("client", response_headers['client']);
   localStorage.setItem("access-token", response_headers['access-token']);
@@ -82,6 +95,7 @@ export function setInitialState(response_headers, response_data) {
   localStorage.setItem("firstname", response_data['firstname']);
   localStorage.setItem("lastname", response_data['lastname']);
   localStorage.setItem("user_id", response_data['id']);
+  localStorage.setItem("display_picture", response_data['display_picture']);
 }
 
 function getHeaders() {

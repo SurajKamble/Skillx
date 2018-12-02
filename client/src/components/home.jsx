@@ -19,6 +19,7 @@ import GlobalNav from './global_nav';
 import LeftNav from './left_nav';
 import AddPost from './add_post';
 import Select from 'react-select';
+import PostsContainer from './posts_container';
 
 export default class Home extends Component {
   constructor(props) {
@@ -33,12 +34,22 @@ export default class Home extends Component {
       selectedSkills: [],
       show: true,
       allSkillsDisabled: [],
-      allSkillsEnabled: []
+      allSkillsEnabled: [],
+      allHomePosts: []
     };
   }
 
   componentDidMount() {
-    this.getAllSkills()
+    this.getAllSkills();
+    APIUtil.getAllHomePosts().then(response => {
+      this.setState({
+        allHomePosts: response.data
+      });
+      console.log("In Home: ");
+      console.log(this.state.allHomePosts);
+    }).catch(error => {
+      console.log(error.response);
+    });
   }
 
   addSkills() {
@@ -92,18 +103,7 @@ export default class Home extends Component {
       <Col xs={12} sm={8} md={8} lg={8} className="center-col">
         <div>
           <AddPost/>
-          <Panel>
-            <Panel.Heading>
-              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>Panel content</Panel.Body>
-          </Panel>
-          <Panel>
-            <Panel.Heading>
-              <Panel.Title componentClass="h3">Panel heading with a title</Panel.Title>
-            </Panel.Heading>
-            <Panel.Body>Panel content</Panel.Body>
-          </Panel>
+          <PostsContainer allUserSkillPosts={this.state.allHomePosts}/>
         </div>
           <div className="modal-container">
             <Modal show={this.state.show} onHide={this.handleHide} container={this} aria-labelledby="contained-modal-title">

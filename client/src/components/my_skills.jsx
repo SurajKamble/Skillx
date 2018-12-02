@@ -44,7 +44,6 @@ export default class MySkills extends Component {
       this.setState({
         selectedSkill: this.state.allUserSkills[0].user_skill_id
       });
-      console.log(this.state.selectedSkill);
     }).catch(error => {
       console.log(error.response);
     });

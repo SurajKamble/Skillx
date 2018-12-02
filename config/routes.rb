@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
     post 'auth/oauth', to:'authorization#get_authorization'
 
+    get 'explore', to: 'explore#index'
+    get 'home', to: 'home#index'
+
     resources :skills, only: [:index, :show]
 
     resources :users

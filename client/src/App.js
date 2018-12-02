@@ -7,6 +7,7 @@ import Login from './components/login';
 import GlobalNav from './components/global_nav';
 import EditProfile from './components/edit_profile';
 import MySkills from './components/my_skills';
+import Explore from './components/explore';
 import RegistrationPage from './components/registration_page';
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 
@@ -53,7 +54,7 @@ class App extends Component {
             <PrivateRoute exact path="/" component={ Home } />
             <PrivateRoute path="/edit_profile" component={ EditProfile } />
             <PrivateRoute path="/my_skills" component={ MySkills } />
-            <PrivateRoute path="/explore" component={ MySkills } />
+            <PrivateRoute path="/explore" component={ Explore } />
             <Route path="/register" component={ RegistrationPage } />
           </div>
         </Router>
