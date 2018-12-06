@@ -1,17 +1,6 @@
 import React, {Component} from "react";
-import {
-  Button,
-  FormGroup,
-  FormControl,
-  ControlLabel,
-  Navbar,
-  NavItem,
-  Nav,
-  NavDropdown,
-  MenuItem,
-  Glyphicon,
-  InputGroup
-} from "react-bootstrap";
+import {FormGroup, FormControl, Navbar, NavItem, Nav, NavDropdown, MenuItem}
+       from "react-bootstrap";
 import {Grid, Row, Col} from "react-bootstrap";
 import "./global_nav.css";
 import * as APIUtil from "../util/api_util";
@@ -102,7 +91,7 @@ export default class GlobalNav extends Component {
       </Navbar.Header>
       <Navbar.Collapse>
         <Nav className="navbar-margin" pullRight={true}>
-          <NavDropdown eventKey={3}
+          <NavDropdown eventKey={3} className = "nav-dropdown"
             title = {<img className="dropdown-display-picture" src={localStorage.getItem("display_picture")}/>}
             id="basic-nav-dropdown" pullRight={true}>
             <MenuItem eventKey={3.1} href="/edit_profile">Edit Profile</MenuItem>

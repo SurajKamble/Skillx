@@ -12,16 +12,18 @@ class Api::PostsController < ApplicationController
 
   def create
     @post = Post.create(postable_id: params[:user_skill_id], postable_type: 'UserSkill')
-
     # Create PostContent
     post_content = PostContent.create(post_id: @post.id, text: params[:content])
     json_response(post_content.errors) unless post_content.save
-
     # Create LinkPreview
     link_preview_object = LinkThumbnailer.generate(params[:link])
     link_preview = LinkPreview.create(post_id: @post.id, url: link_preview_object.url,
       title: link_preview_object.title, description: link_preview_object.description,
       image_url: link_preview_object.images.first.src.to_s)
+      # Download the image from image_url
+      image_file_name = link_preview.title.split(' ').first + '.jpg'
+      downloaded_image = open(link_preview.image_url)
+      link_preview.image.attach(io: downloaded_image, filename: image_file_name)
     link_preview.save
 
     @post.save ? json_response(@post) : json_response(@post.errors)

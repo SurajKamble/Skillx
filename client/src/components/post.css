@@ -26,21 +26,31 @@
 
 .post-link-preview {
   margin-top: 10px;
-  display: flex;
+  /* display: flex; */
   border: 1px solid #e2e2e2;
   border-radius: 10px;
 }
 
+.post-link-preview:hover {
+  background-color: #F8F8F8;
+}
+
 .post-link-preview-img-div {
-  padding: 0px 10px 0px 0px;
+  min-height: 80px;
+  max-height: 250px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0px 0px 10px 10px;
 }
 
 .post-link-preview-img {
-  min-height: 80px;
-  max-height: 150px;
-  min-width: 100px;
-  max-width: 200px;
-  border-radius: 10px 0px 0px 10px;
+  /* min-height: 80px;
+  max-height: 250px;
+  min-width: 100%;
+  max-width: 100%; */
+  height: auto;
+  width: 100%;
+  border-radius: 0px 0px 10px 10px;
 }
 
 .text-bold {
@@ -50,7 +60,7 @@
 .link-preview-content {
   min-height: 80px;
   max-height: 150px;
-  padding: 2px 10px 10px 2px;
+  padding: 10px;
 }
 
 .link-preview-link,
@@ -63,7 +73,7 @@
 }
 
 .link-preview-link:hover {
-  background: grey;
+  background-color: black;
 }
 
 .post-panel {
@@ -72,7 +82,7 @@
 }
 
 /* styles for '...' */
-.link-preview-desc, .link-preview-title {
+.link-preview-desc {
   padding-top: 5px;
   width: 100%;
   /* hide text if it more than N lines  */
@@ -90,29 +100,38 @@
   padding-right: 1em;
 }
 
+/*CSS for Ellipsis*/
 /* create the ... */
-.link-preview-desc:before, .link-preview-title:before {
+/* .link-preview-desc:before { */
   /* points in the end */
-  content: '...';
+  /* content: '...'; */
   /* absolute position */
-  position: absolute;
+  /* position: absolute; */
   /* set position to right bottom corner of block */
-  right: 0;
-  bottom: 0;
-}
+  /* right: 0; */
+  /* bottom: 0; */
+/* } */
 
 /* hide ... if we have text, which is less than or equal to max lines */
-.link-preview-desc:after, .link-preview-title:after {
+/* .link-preview-desc:after { */
   /* points in the end */
-  content: '';
+  /* content: ''; */
   /* absolute position */
-  position: absolute;
+  /* position: absolute; */
   /* set position to right bottom corner of text */
-  right: 0;
+  /* right: 0; */
   /* set width and height */
-  width: 1em;
-  height: 1em;
-  margin-top: 0.2em;
+  /* width: 1em; */
+  /* height: 1em; */
+  /* margin-top: 0.2em; */
   /* bg color = bg color under block */
-  background: white;
+  /* background: white; */
+/* } */
+
+.not-bold {
+  font-weight: normal;
+}
+
+.ligher-black {
+  color: #666666;
 }

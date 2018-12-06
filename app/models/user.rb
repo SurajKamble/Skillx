@@ -22,10 +22,12 @@ class User < ApplicationRecord
     where(email: data['email']).first_or_initialize.tap do |user|
       user.email = data['email']
       user.firstname = data['givenName']
+      user.firstname.capitalize!
       user.lastname = data['familyName']
+      user.lastname.capitalize!
       # Download user's profile picture from google and attach the
       # downloaded file to the user's display_picture.
-      image_file_name = data['givenName'] + '.jpg'
+      image_file_name = user.firstname + '.jpg'
       downloaded_image = open(data['imageUrl'])
       user.display_picture.attach(io: downloaded_image, filename: image_file_name)
       # Create a randowm password for the user.

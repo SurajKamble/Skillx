@@ -117,6 +117,10 @@
 }
 
 .dropdown-display-picture {
-  border-radius: 50%;
+  border-radius: 10%;
   height: 40px;
+}
+
+#basic-nav-dropdown {
+  padding: 6px 15px 6px 15px;
 }

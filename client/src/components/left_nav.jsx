@@ -1,17 +1,5 @@
 import React, {Component} from "react";
-import {
-  Button,
-  FormGroup,
-  FormControl,
-  ControlLabel,
-  Grid,
-  Row,
-  Col,
-  Modal,
-  Panel,
-  NavItem,
-  Nav
-} from "react-bootstrap";
+import {NavItem, Nav} from "react-bootstrap";
 import "./sign_up.css";
 import * as APIUtil from "../util/api_util";
 import {Redirect} from 'react-router-dom';
