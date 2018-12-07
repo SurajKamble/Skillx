@@ -1,10 +1,9 @@
 import React, {Component} from "react";
 import {Row, Col} from "react-bootstrap";
-import "./sign_up.css";
+import "./base.css";
 import * as APIUtil from "../util/api_util";
 import {Redirect} from 'react-router-dom';
 import GlobalNav from './global_nav';
-import MySkillsLeftNav from './my_skills_left_nav';
 import AddPost from './add_post';
 import SkillPosts from './skill_posts';
 import Select from 'react-select';
@@ -25,8 +24,6 @@ export default class Explore extends Component {
       this.setState({
         allExplorePosts: response.data
       });
-      console.log("In mount");
-      console.log(localStorage.getItem("display_picture"));
     }).catch(error => {
       console.log(error.response);
     });

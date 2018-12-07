@@ -19,12 +19,10 @@ export default class GlobalNav extends Component {
     this.setHomeActive = this.setHomeActive.bind(this);
     this.setMySkillsActive = this.setMySkillsActive.bind(this);
     this.setExploreActive = this.setExploreActive.bind(this);
-    console.log("In const");
   }
 
   componentDidMount() {
     if (this.props.location.pathname === "/") {
-      console.log("In if");
       this.setHomeActive();
     }
     if (this.props.location.pathname === "/my_skills") {
@@ -49,7 +47,6 @@ export default class GlobalNav extends Component {
   }
 
   setHomeActive() {
-    console.log("IN nav item");
     this.setState({
       homeActive: 'active nav-item-active',
       mySkillsActive: '',

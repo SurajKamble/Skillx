@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 import {Row, Col, Nav, NavItem} from "react-bootstrap";
-import "./sign_up.css";
+import "./base.css";
+import "./my_skills.css";
 import * as APIUtil from "../util/api_util";
 import {Redirect} from 'react-router-dom';
 import GlobalNav from './global_nav';
-import MySkillsLeftNav from './my_skills_left_nav';
 import AddPost from './add_post';
 import SkillPosts from './skill_posts';
 import Select from 'react-select';
@@ -56,9 +56,9 @@ export default class MySkills extends Component {
     return (
       <Row>
         <Col xsHidden sm={2} md={2} lg={2}>
-          <div>
+          <div className="my-skills-left-nav-div">
             <div className="my-skills-left-nav-header">
-              <h4>My Skills</h4>
+              <h5>My Skills</h5>
             </div>
             <Nav className="my-skills-left-nav" bsStyle="pills" stacked={true}
               activeKey={this.state.selectedSkill}

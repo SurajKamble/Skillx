@@ -33,8 +33,6 @@ export default class Home extends Component {
       this.setState({
         allHomePosts: response.data
       });
-      console.log("In Home: ");
-      console.log(this.state.allHomePosts);
     }).catch(error => {
       console.log(error.response);
     });
@@ -61,7 +59,7 @@ export default class Home extends Component {
         allSkillsDisabled: response.data.map(skill => ({value: skill.id, label: skill.name, isDisabled: true}))
       })
     }).catch(error => {
-      console.log(error)
+      console.log(error.response)
     });
   }
 

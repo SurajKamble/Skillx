@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Modal, NavItem, Nav} from "react-bootstrap";
-import "./sign_up.css";
+import "./add_post_modal.css";
 import * as APIUtil from "../util/api_util";
 import {Redirect, Link} from 'react-router-dom';
 import GlobalNav from './global_nav';
@@ -49,7 +49,7 @@ export default class AddPostModal extends Component {
         allUserSkills: response.data.map(user_skill => ({value: user_skill.id, label: user_skill.skill_name}))
       })
     }).catch(error => {
-      console.log(error)
+      console.log(error.response)
     });
   }
 
@@ -79,10 +79,10 @@ export default class AddPostModal extends Component {
     return (<Modal className="add-post-modal-container" show={this.state.show} onHide={this.handleModalClose} container={this} aria-labelledby="contained-modal-title">
       <Modal.Header className="add-post-modal-header" closeButton={true}>
         <Nav bsStyle="tabs" activeKey={1}>
-          <NavItem eventKey={1}>
+          <NavItem className="add-post-tab" eventKey={1}>
             Add Post
           </NavItem>
-          <NavItem eventKey={2}>
+          <NavItem className="start-project-tab" eventKey={2}>
             Start a Project
           </NavItem>
         </Nav>

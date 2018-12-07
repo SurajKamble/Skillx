@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {Panel} from "react-bootstrap";
-import "./sign_up.css";
+import "./add_post.css";
 import * as APIUtil from "../util/api_util";
 import {Redirect, Link} from 'react-router-dom';
 import GlobalNav from './global_nav';
@@ -34,7 +34,7 @@ export default class AddPost extends Component {
         userSkills: response.data.map(skill => ({value: skill.id, label: skill.name}))
       })
     }).catch(error => {
-      console.log(error)
+      console.log(error.response)
     });
   }
 

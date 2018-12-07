@@ -1,10 +1,9 @@
 import React, {Component} from "react";
 import {FormGroup, FormControl, Row, Col} from "react-bootstrap";
-import "./sign_up.css";
+import "./skill_posts.css";
 import * as APIUtil from "../util/api_util";
 import {Redirect} from 'react-router-dom';
 import GlobalNav from './global_nav';
-import MySkillsLeftNav from './my_skills_left_nav';
 import AddPost from './add_post';
 import Select from 'react-select';
 import AddPostModal from './add_post_modal';
@@ -58,8 +57,6 @@ export default class SkillPosts extends Component {
   getAllUserSkillPosts() {
     APIUtil.getAllUserSkillPosts(this.state.userSkillId).then(response => {
       this.setState({allUserSkillPosts: response.data});
-      console.log("In Posts: ");
-      console.log(response);
     }).catch(error => {
       console.log(error.response);
     });

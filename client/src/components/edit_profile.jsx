@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./sign_up.css";
 import * as APIUtil from "../util/api_util";
 import { Redirect, Link } from 'react-router-dom';
 

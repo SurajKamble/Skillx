@@ -28,9 +28,7 @@ export default class SignUp extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
     const user = Object.assign({}, this.state);
-
     APIUtil.signUp(user).then(response => {
       APIUtil.setInitialState(response.headers, response.data.data)
       this.setState({ isAuthenticated: true });
