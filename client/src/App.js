@@ -5,7 +5,7 @@ import SignUp from './components/sign_up';
 import Home from './components/home';
 import Login from './components/login';
 import GlobalNav from './components/global_nav';
-import EditProfile from './components/edit_profile';
+import Profile from './components/profile';
 import MySkills from './components/my_skills';
 import Explore from './components/explore';
 import RegistrationPage from './components/registration_page';
@@ -52,10 +52,11 @@ class App extends Component {
         <Router>
           <div id="main-top-div">
             <PrivateRoute exact path="/" component={ Home } />
-            <PrivateRoute path="/edit_profile" component={ EditProfile } />
+            <PrivateRoute path="/profile" component={ Profile } />
             <PrivateRoute path="/my_skills" component={ MySkills } />
             <PrivateRoute path="/explore" component={ Explore } />
             <Route path="/register" component={ RegistrationPage } />
+            <Route path="/profile/:id" component={Profile} />
           </div>
         </Router>
     );

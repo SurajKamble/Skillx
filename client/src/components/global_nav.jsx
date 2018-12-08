@@ -77,7 +77,7 @@ export default class GlobalNav extends Component {
     return (<Navbar fixedTop={true} collapseOnSelect={true}>
       <Navbar.Header>
         <Navbar.Brand className="navbar-margin">
-          <a href="/">Skillspire</a>
+          <a href="/" className="logo">Skillspire</a>
         </Navbar.Brand>
         <Navbar.Form pullLeft={true} className="searchForm">
           <FormGroup className="searchBar">
@@ -91,7 +91,7 @@ export default class GlobalNav extends Component {
           <NavDropdown eventKey={3} className = "nav-dropdown"
             title = {<img className="dropdown-display-picture" src={localStorage.getItem("display_picture")}/>}
             id="basic-nav-dropdown" pullRight={true}>
-            <MenuItem eventKey={3.1} href="/edit_profile">Edit Profile</MenuItem>
+            <MenuItem eventKey={3.1} href="/profile/">Edit Profile</MenuItem>
             <MenuItem divider={true}/>
             <MenuItem eventKey={3.3} onClick={this.signOut}>Sign out</MenuItem>
           </NavDropdown>

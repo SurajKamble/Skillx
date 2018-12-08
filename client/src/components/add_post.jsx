@@ -21,11 +21,11 @@ export default class AddPost extends Component {
   }
 
   handleShow() {
-    this.setState({ show: true });
+    this.setState({show: true});
   }
 
   handleClose() {
-    this.setState({ show: false });
+    this.setState({show: false});
   }
 
   getUserSkills() {
@@ -39,15 +39,15 @@ export default class AddPost extends Component {
   }
 
   render() {
-    return (
-      <div className="add-post-btn-div">
-      <Panel>
-        <Panel.Body className="add-post-panel">
-          <a role="button" className="add-post-link" href="#" onClick={this.handleShow}>How did you up your skills today?</a>
-        </Panel.Body>
-      </Panel>
+    return (<div className="add-post-btn-div">
+      <a role="button" className="add-post-link" href="#" onClick={this.handleShow}>
+        <Panel>
+          <Panel.Body className="add-post-panel">
+            <p>How did you up your skills today?</p>
+          </Panel.Body>
+        </Panel>
+      </a>
       <AddPostModal show={this.state.show} handleClose={this.handleClose}/>
-    </div>
-    );
+    </div>);
   }
 }

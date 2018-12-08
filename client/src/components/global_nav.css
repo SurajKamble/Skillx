@@ -25,14 +25,21 @@
     padding-right: 95px;
     padding-left: 95px;
   }
+
   .navbar-header {
     width: 50%;
   }
+
+  .navbar-margin {
+    margin-bottom: -30px;
+  }
+
   .navbar-form {
     padding: 2px 0px 0px 0px;
     margin-top: 8px;
     margin-bottom: 8px;
   }
+
   .searchForm {
     width: 70%;
   }
@@ -117,10 +124,15 @@
 }
 
 .dropdown-display-picture {
-  border-radius: 10%;
-  height: 40px;
+  border-radius: 50%;
+  height: 38px;
 }
 
 #basic-nav-dropdown {
   padding: 6px 15px 6px 15px;
+}
+
+.logo-img {
+  height: 20px;
+  width: 100px;
 }
