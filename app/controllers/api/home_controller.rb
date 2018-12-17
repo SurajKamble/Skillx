@@ -3,7 +3,7 @@ class Api::HomeController < ApplicationController
 
   def index
     @posts = Post.where(postable_type: 'UserSkill')
-                 .order(created_at: :desc)
+                 .order(created_at: :desc).page(1).per(3)
 
     json_response(@posts)
   end

@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
     resources :users
 
+    resources :posts
+
     resources :user_skills, shallow: true do
       resources :posts
       resources :projects, shallow: true do
