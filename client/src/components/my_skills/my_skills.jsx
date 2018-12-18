@@ -5,7 +5,8 @@ import {
   Nav,
   NavItem,
   FormGroup,
-  FormControl
+  FormControl,
+  Tab
 } from "react-bootstrap";
 import "../base/base.css";
 import "./my_skills.css";
@@ -25,6 +26,7 @@ export default class MySkills extends Component {
     /* Takes no Props */
     this.state = {
       selectedSkillId: '',
+      skillNameBySkillId: new Map(),
       showAddPostModal: false,
       selectedSkillName: '',
       allUserSkillPosts: [],
@@ -43,7 +45,11 @@ export default class MySkills extends Component {
   }
 
   handleLeftNavSelect(selectedSkillId) {
-    this.setState({selectedSkillId: selectedSkillId});
+    this.setState({
+      selectedSkillId: selectedSkillId,
+      selectedSkillName: this.state.skillNameBySkillId.get(selectedSkillId),
+      allUserSkillPosts: [],
+      hasMoreItems: true});
   }
 
   handleAddPostModalShow() {
@@ -55,26 +61,35 @@ export default class MySkills extends Component {
   }
 
   getAllUserSkillPosts(page) {
-    if (this.state.selectedSkillId === '') return;
+    if (this.state.allUserSkillPosts.length === 0) {
+      page = 1;
+    }
+    if (this.state.selectedSkillId === '')
+      return;
     APIUtil.getAllUserSkillPosts(this.state.selectedSkillId, page).then(response => {
       var hasMoreItems = !(response.data.length === 0);
       var allUserSkillPosts = this.state.allUserSkillPosts;
       Array.prototype.push.apply(allUserSkillPosts, response.data);
-      this.setState({
-        allUserSkillPosts: allUserSkillPosts,
-        hasMoreItems: hasMoreItems
-      });
+      this.setState({allUserSkillPosts: allUserSkillPosts, hasMoreItems: hasMoreItems});
     }).catch(error => {
       console.log(error.response);
     });
   }
 
   getCurrentUserSkills() {
+    var skillNameBySkillId = new Map();
     APIUtil.getCurrentUserSkills().then(response => {
-    this.setState({
-      allUserSkills: response.data,
-      selectedSkillId: response.data[0].id
-    });
+      var currentUserSkills = response.data;
+      var selectedSkillId = currentUserSkills[0].id;
+      currentUserSkills.map(user_skill=> {
+        skillNameBySkillId.set(user_skill.id, user_skill.skill_name)
+      });
+      this.setState({
+        allUserSkills: currentUserSkills,
+        selectedSkillId: selectedSkillId,
+        skillNameBySkillId: skillNameBySkillId,
+        selectedSkillName: skillNameBySkillId.get(selectedSkillId)
+      });
     }).catch(error => {
       console.log(error.response);
     });
@@ -82,18 +97,21 @@ export default class MySkills extends Component {
 
   render() {
     var leftNavSkills = this.state.allUserSkills.map(user_skill => {
-      return (
-      <NavItem eventKey={user_skill.id} key={user_skill.id}>
+      return (<NavItem eventKey={user_skill.id} key={user_skill.id}>
         {user_skill.skill_name}
-      </NavItem>)});
-    var posts = [];
-    this.state.allUserSkillPosts.map(
-      post => {
-        posts.push(
-        <div key={post.id}>
-          <Post post={post} id={post.id}/>
-        </div>)
+      </NavItem>)
     });
+    var posts = this.state.allUserSkillPosts.map(post => {
+      return (<div key={post.id}>
+        <Post post={post} id={post.id}/>
+      </div>)
+    });
+    /* Important to have a unique key for this div since we need a unique div
+       for each UserSkill
+     */
+    var postsContainer = <div key={this.state.selectedSkillId}>
+      <PostsContainer loadHomePosts={this.getAllUserSkillPosts}
+        hasMoreItems={this.state.hasMoreItems} posts={posts}/></div>;
 
     return (<Row>
       <Col xsHidden={true} sm={2} md={2} lg={2}>
@@ -111,7 +129,8 @@ export default class MySkills extends Component {
         <Media query="(max-width: 768px)">
           {
             matches => matches
-              ? (<Nav className="my-skills-left-nav" bsStyle="tabs" activeKey={this.state.selectedSkillId}
+              ? (<Nav className="my-skills-left-nav skill-header" bsStyle="tabs"
+              activeKey={this.state.selectedSkillId}
               onSelect={this.handleLeftNavSelect}>
                 {leftNavSkills}
               </Nav>)
@@ -132,11 +151,9 @@ export default class MySkills extends Component {
             </Col>
           </Row>
         </div>
-        <AddPostModal show={this.state.showAddPostModal}
-          handleClose={this.handleAddPostModalClose}
+        <AddPostModal show={this.state.showAddPostModal} handleClose={this.handleAddPostModalClose}
           updateUserSkillPosts={this.updateUserSkillPosts}/>
-        <PostsContainer loadHomePosts={this.getAllUserSkillPosts}
-          hasMoreItems={this.state.hasMoreItems} posts={posts}/>
+        {postsContainer}
       </Col>
       <Col xsHidden={true} sm={2} md={2} lg={2}></Col>
     </Row>);

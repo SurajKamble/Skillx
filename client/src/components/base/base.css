@@ -1,3 +1,13 @@
+html, body {
+  height: 100%;
+  font-family: Noto Sans, arial, verdana;
+  background-color: #f6f6f6;
+}
+
+#root {
+  height: 100%;
+}
+
 @media (min-width: 768px) {
   .container {
     padding-right: 95px;

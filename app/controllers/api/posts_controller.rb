@@ -9,8 +9,7 @@ class Api::PostsController < ApplicationController
 
       json_response(@posts)
     else
-      @posts = Post.where(postable_type: 'UserSkill')
-                   .order(created_at: :desc).page(params[:page]).per(4)
+      @posts = Post.where(postable_type: 'UserSkill').page(params[:page]).per(4)
 
       json_response(@posts)
     end

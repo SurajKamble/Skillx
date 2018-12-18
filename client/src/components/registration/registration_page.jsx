@@ -75,11 +75,10 @@ export default class RegistrationPage extends Component {
         <Col xs={12} sm={12} md={5} lg={5} className="registration-form">
           <h2 className="sign-up-header">{pageHeader}</h2>
           <div className="text-center social-btn">
-            <GoogleLogin className="btn btn-danger btn-block"
+            <GoogleLogin className="btn btn-block"
               clientId="126300833912-j5ka215q1of9ulptphkm2rb64ojannuk.apps.googleusercontent.com"
               onSuccess={this.responseGoogle}
               onFailure={this.responseGoogle}>
-              <i className="fa fa-google"></i>
               Continue with
               <b> Google</b>
             </GoogleLogin>
