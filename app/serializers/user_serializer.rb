@@ -4,7 +4,6 @@ class UserSerializer < ActiveModel::Serializer
   attributes :id, :firstname, :lastname, :email, :display_picture
 
   has_many :user_skills
-  has_many :skills, through: :user_skills
 
   def display_picture
     # Send the blob URL for the display_picture attribute

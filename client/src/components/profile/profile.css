@@ -52,3 +52,12 @@
 .css-d8oujb {
   width: 0px !important;
 }
+
+.top-margin {
+  margin-top: 30px;
+}
+
+.follow-button {
+  margin-left: 30px;
+  margin-top: -10px;
+}

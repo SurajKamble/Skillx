@@ -25,19 +25,21 @@ export default class MySkills extends Component {
     super(props);
     /* Takes no Props */
     this.state = {
-      selectedSkillId: '',
       skillNameBySkillId: new Map(),
-      showAddPostModal: false,
+      selectedSkillId: '',
       selectedSkillName: '',
       allUserSkillPosts: [],
       allUserSkills: [],
-      hasMoreItems: true
+      hasMoreItems: true,
+      newPostAdded: false,
+      showAddPostModal: false
     }
     this.handleLeftNavSelect = this.handleLeftNavSelect.bind(this);
     this.handleAddPostModalShow = this.handleAddPostModalShow.bind(this);
     this.handleAddPostModalClose = this.handleAddPostModalClose.bind(this);
     this.getAllUserSkillPosts = this.getAllUserSkillPosts.bind(this);
     this.getCurrentUserSkills = this.getCurrentUserSkills.bind(this);
+    this.newPostAdded = this.newPostAdded.bind(this);
   }
 
   componentDidMount() {
@@ -45,11 +47,17 @@ export default class MySkills extends Component {
   }
 
   handleLeftNavSelect(selectedSkillId) {
+    /*
+      When a new UserSkill is selected, we need an empty allUserSkillPosts
+      and hasMoreItems needs to be true
+    */
     this.setState({
       selectedSkillId: selectedSkillId,
       selectedSkillName: this.state.skillNameBySkillId.get(selectedSkillId),
       allUserSkillPosts: [],
-      hasMoreItems: true});
+      hasMoreItems: true,
+      newPostAdded: false
+    });
   }
 
   handleAddPostModalShow() {
@@ -61,16 +69,18 @@ export default class MySkills extends Component {
   }
 
   getAllUserSkillPosts(page) {
-    if (this.state.allUserSkillPosts.length === 0) {
-      page = 1;
-    }
+    /* If selectedSkillId is null, do not map an API call */
     if (this.state.selectedSkillId === '')
       return;
     APIUtil.getAllUserSkillPosts(this.state.selectedSkillId, page).then(response => {
       var hasMoreItems = !(response.data.length === 0);
       var allUserSkillPosts = this.state.allUserSkillPosts;
+      /* Add the new posts returned by the API to the existing allUserSkillPosts */
       Array.prototype.push.apply(allUserSkillPosts, response.data);
-      this.setState({allUserSkillPosts: allUserSkillPosts, hasMoreItems: hasMoreItems});
+      this.setState({
+        allUserSkillPosts: allUserSkillPosts,
+        hasMoreItems: hasMoreItems
+      });
     }).catch(error => {
       console.log(error.response);
     });
@@ -95,6 +105,14 @@ export default class MySkills extends Component {
     });
   }
 
+  newPostAdded() {
+    this.setState({
+      newPostAdded: true,
+      allUserSkillPosts: [],
+      hasMoreItems: true
+    });
+  }
+
   render() {
     var leftNavSkills = this.state.allUserSkills.map(user_skill => {
       return (<NavItem eventKey={user_skill.id} key={user_skill.id}>
@@ -106,10 +124,19 @@ export default class MySkills extends Component {
         <Post post={post} id={post.id}/>
       </div>)
     });
-    /* Important to have a unique key for this div since we need a unique div
-       for each UserSkill
+     var key = this.state.selectedSkillId;
+     /*
+        When a new post is added, create a new div(by creating a new unique key)
+        so that the posts get updated.
      */
-    var postsContainer = <div key={this.state.selectedSkillId}>
+     if (this.state.newPostAdded) {
+       key = this.state.selectedSkillId + 100000;
+     }
+     /*
+        Important to have a unique key for this div since we need a unique div
+        for posts of each UserSkill
+      */
+    var postsContainer = <div key={key}>
       <PostsContainer loadHomePosts={this.getAllUserSkillPosts}
         hasMoreItems={this.state.hasMoreItems} posts={posts}/></div>;
 
@@ -152,7 +179,7 @@ export default class MySkills extends Component {
           </Row>
         </div>
         <AddPostModal show={this.state.showAddPostModal} handleClose={this.handleAddPostModalClose}
-          updateUserSkillPosts={this.updateUserSkillPosts}/>
+          newPostAdded={this.newPostAdded}/>
         {postsContainer}
       </Col>
       <Col xsHidden={true} sm={2} md={2} lg={2}></Col>

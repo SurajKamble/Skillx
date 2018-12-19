@@ -27,6 +27,10 @@ export function isCurrentUser(user_id) {
     : false;
 }
 
+export function getUserData(user_id) {
+  return axios.get("/api/users/" + user_id, getHeaders());
+}
+
 export function getCurrentUserSkills() {
   return axios.get("/api/user_skills", getHeaders());
 }
@@ -73,6 +77,13 @@ export function getAllHomePosts(page) {
       page: page
     }
   });
+}
+
+export function followUser(user_id) {
+  var postData = {
+    'followed_id': user_id
+  }
+  return axios.post("/api/relationships", postData, getHeaders());
 }
 
 export function addUserSkillPost(user_skill_id, content, link) {

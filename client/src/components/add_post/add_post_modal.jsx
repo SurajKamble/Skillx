@@ -65,7 +65,7 @@ export default class AddPostModal extends Component {
     APIUtil.addUserSkillPost(this.state.selectedUserSkill.value,
       this.state.postContent, this.state.link).then(response => {
       this.handleModalClose();
-      this.props.updateUserSkillPosts(response.data);
+      this.props.newPostAdded();
     }).catch(error => {
       console.log(error.response)
     });

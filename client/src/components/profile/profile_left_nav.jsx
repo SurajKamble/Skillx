@@ -12,11 +12,9 @@ export default class ProfileLeftNav extends Component {
       <div className="profile-left-nav-div">
         <h5 className="profile-left-nav-header">Profile</h5>
       <Nav className="profile-left-nav" bsStyle="pills"
-        stacked={true}
-        activeKey={1}>
+        stacked={true}>
       <NavItem eventKey={1} key={1} className="profile-left-nav-item" href="/home">
-        Posts
-        <p className="profile-left-nav-count-num">723</p>
+        Top Posts
       </NavItem>
       <NavItem eventKey={2} key={2} href="/home">
         Followers

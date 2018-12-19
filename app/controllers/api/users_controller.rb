@@ -14,4 +14,16 @@ class Api::UsersController < ApplicationController
       json_response("No user found", 404)
     end
   end
+
+  def following
+    user  = User.find(params[:id])
+    users = user.following
+    json_response(users)
+  end
+
+  def followers
+    user  = User.find(params[:id])
+    users = user.followers
+    json_response(users)
+  end
 end

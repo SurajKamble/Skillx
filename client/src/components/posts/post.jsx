@@ -11,6 +11,8 @@ export default class Post extends Component {
   }
 
   render() {
+    var user_url = "/profile/" + this.state.post.user.id + "/" + this.state.post.user.firstname;
+
     return (<Panel key={this.props.id} className="post-panel">
       <div className="post-header-div">
         <div className="post-header-image-div">
@@ -18,7 +20,7 @@ export default class Post extends Component {
         </div>
         <div className="post-header-username-div">
           <h5 className="post-header-username">
-            {this.state.post.user.firstname + " " + this.state.post.user.lastname}
+            <a className="user-url-link" href={user_url}>{this.state.post.user.firstname + " " + this.state.post.user.lastname}</a>
             <span className = 'not-bold ligher-black'> posted in </span>
             <span>{this.state.post.skill_name}</span>
           </h5>

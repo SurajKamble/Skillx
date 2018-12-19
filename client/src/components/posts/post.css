@@ -130,3 +130,15 @@
 .ligher-black {
   color: #666666;
 }
+
+.user-url-link {
+  color: black;
+}
+
+.user-url-link:link,
+.user-url-link:visited,
+.user-url-link:active,
+.user-url-link:hover,
+.user-url-link:focus {
+  text-decoration: none;
+}
