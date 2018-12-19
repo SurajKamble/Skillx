@@ -23,12 +23,16 @@ export default class Home extends Component {
     this.state = {
       allSkills: [],
       selectedSkills: [],
-      show: false,
+      show: true,
       allSkillsDisabled: [],
       allSkillsEnabled: [],
       allHomePosts: [],
       hasMoreItems: true
     };
+  }
+
+  componentDidMount() {
+    this.getAllSkills();
   }
 
   loadHomePosts(page) {
@@ -46,7 +50,9 @@ export default class Home extends Component {
   }
 
   addSkills() {
+    console.log(this.state.selectedSkills);
     this.state.selectedSkills = this.state.selectedSkills.map(skill_data => skill_data.value);
+    console.log(this.state.selectedSkills);
     APIUtil.addSkills(this.state.selectedSkills).then(response => {
       this.setState({show: false});
     }).catch(error => {

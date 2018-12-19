@@ -97,7 +97,6 @@ ActiveRecord::Schema.define(version: 2018_12_19_012639) do
   create_table "user_skills", force: :cascade do |t|
     t.integer "user_id"
     t.integer "skill_id"
-    t.string "skill_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["skill_id"], name: "index_user_skills_on_skill_id"

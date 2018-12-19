@@ -21,7 +21,7 @@ class PostSerializer < ActiveModel::Serializer
   end
 
   def skill_name
-    object.postable.skill_name
+    object.postable.skill.name
   end
 
   def post_content

@@ -3,4 +3,8 @@ class UserSkillSerializer < ActiveModel::Serializer
 
   belongs_to :user
   belongs_to :skill
+
+  def skill_name
+    object.skill.name
+  end
 end
