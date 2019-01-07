@@ -1,0 +1,144 @@
+.post-header-div {
+  display: flex;
+  width: 100%;
+}
+
+.post-header-div {
+  padding: 10px;
+}
+
+.post-header-image {
+  border-radius: 50%;
+  height: 40px;
+}
+
+.post-header-username-div {
+  padding-left: 10px;
+}
+
+.post-header-username {
+  font-weight: bold;
+}
+
+.post-content {
+  padding: 0px 10px 10px 10px;
+}
+
+.post-link-preview {
+  margin-top: 10px;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+}
+
+.post-link-preview:hover {
+  background-color: #F8F8F8;
+}
+
+.post-link-preview-img-div {
+  min-height: 80px;
+  max-height: 250px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.post-link-preview-img {
+  height: auto;
+  width: 100%;
+  border-radius: 0px 0px 10px 10px;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.link-preview-content {
+  min-height: 80px;
+  max-height: 150px;
+  padding: 10px;
+}
+
+.link-preview-link,
+.link-preview-link:link,
+.link-preview-link:hover,
+.link-preview-link:active,
+.link-preview-link:visited {
+  text-decoration: none;
+  color: black;
+}
+
+.link-preview-link:hover {
+  background-color: black;
+}
+
+.post-panel {
+  padding: 5px;
+  margin-bottom: 5px;
+}
+
+/* styles for '...' */
+.link-preview-desc {
+  padding-top: 5px;
+  width: 100%;
+  /* hide text if it more than N lines  */
+  overflow: hidden;
+  /* for set '...' in absolute position */
+  position: relative;
+  /* use this value to count block height */
+  line-height: 1.2em;
+  /* max-height = line-height (1.2) * lines max number (3) */
+  max-height: 2.8em;
+  /* fix problem when last visible word doesn't adjoin right side  */
+  /* text-align: justify; */
+  /* place for '...' */
+  margin-right: -1em;
+  padding-right: 1em;
+}
+
+/*CSS for Ellipsis*/
+/* create the ... */
+/* .link-preview-desc:before { */
+  /* points in the end */
+  /* content: '...'; */
+  /* absolute position */
+  /* position: absolute; */
+  /* set position to right bottom corner of block */
+  /* right: 0; */
+  /* bottom: 0; */
+/* } */
+
+/* hide ... if we have text, which is less than or equal to max lines */
+/* .link-preview-desc:after { */
+  /* points in the end */
+  /* content: ''; */
+  /* absolute position */
+  /* position: absolute; */
+  /* set position to right bottom corner of text */
+  /* right: 0; */
+  /* set width and height */
+  /* width: 1em; */
+  /* height: 1em; */
+  /* margin-top: 0.2em; */
+  /* bg color = bg color under block */
+  /* background: white; */
+/* } */
+
+.not-bold {
+  font-weight: normal;
+}
+
+.ligher-black {
+  color: #666666;
+}
+
+.user-url-link {
+  color: black;
+}
+
+.user-url-link:link,
+.user-url-link:visited,
+.user-url-link:active,
+.user-url-link:hover,
+.user-url-link:focus {
+  text-decoration: none;
+}

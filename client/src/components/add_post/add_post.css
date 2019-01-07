@@ -1,0 +1,32 @@
+.add-post-link {
+  color: grey;
+  font-size: large;
+}
+
+.add-post-link:link {
+  text-decoration: none;
+}
+
+.add-post-link:visited {
+  text-decoration: none;
+}
+
+.add-post-link:active {
+  text-decoration: none;
+}
+
+.add-post-link:focus {
+  color: grey;
+  text-decoration: none;
+}
+
+.add-post-link:hover {
+  color: #1b1b1b;
+  text-decoration: none;
+}
+
+.add-post-panel {
+  height: 50px;
+  line-height: 22px;
+  text-align: center;
+}

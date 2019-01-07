@@ -1,11 +1,26 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  # devise_for :users
 
   namespace :api, defaults: {format: :json} do
+    mount_devise_token_auth_for 'User', at: 'auth', skip: [:omniauth_callbacks]
+
+    post 'auth/oauth', to:'authorization#get_authorization'
+
+    get 'explore', to: 'explore#index'
+    get 'home', to: 'home#index'
 
     resources :skills, only: [:index, :show]
 
-    resources :users
+    resources :users do
+     member do
+       get :following, :followers
+     end
+   end
+
+   resources :relationships, only: [:create, :destroy]
+
+    resources :posts
 
     resources :user_skills, shallow: true do
       resources :posts

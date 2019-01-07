@@ -1,14 +1,9 @@
 class Api::UsersController < ApplicationController
+  before_action :authenticate_api_user!
 
   def index
     @users = User.all
     json_response(@users)
-  end
-
-  def create
-    @user = User.create(firstname: params[:firstname], lastname: params[:lastname], email: params[:email])
-    # byebug
-    @user.save ? json_response(@user) : json_response(@user.errors, 404)
   end
 
   def show
@@ -18,5 +13,17 @@ class Api::UsersController < ApplicationController
     else
       json_response("No user found", 404)
     end
+  end
+
+  def following
+    user  = User.find(params[:id])
+    users = user.following
+    json_response(users)
+  end
+
+  def followers
+    user  = User.find(params[:id])
+    users = user.followers
+    json_response(users)
   end
 end

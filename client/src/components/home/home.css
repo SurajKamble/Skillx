@@ -1,0 +1,20 @@
+.home-left-nav>li.active>a, .home-left-nav>li.active>a:focus, .home-left-nav>li.active>a:hover {
+  color: #808080;
+  background-color: #DCDCDC;
+}
+
+.home-left-nav>li>a {
+  color: #808080;
+  padding: 5px 5px;
+  background-color: inherit;
+}
+
+.home-left-nav-header {
+  border-bottom: 1px solid #e2e2e2;
+  padding-left: 5px;
+  padding-bottom: 10px;
+}
+
+.zap-icon {
+  vertical-align: middle;
+}

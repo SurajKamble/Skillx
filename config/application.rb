@@ -9,6 +9,7 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
+require "active_storage/engine"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
 
@@ -30,5 +31,17 @@ module Skillx
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.middleware.use ActionDispatch::Flash
+    config.middleware.use ActionDispatch::Session::ActiveRecordStore, :key => '_Skillx_session'
+    config.middleware.use ActionDispatch::Cookies
+
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '*',
+          headers: :any,
+          expose: ['access-token', 'expiry', 'token-type', 'uid', 'client'],
+          methods: [:get, :post, :options, :delete, :put]
+      end
+    end
   end
 end

@@ -1,0 +1,25 @@
+/*
+   Define the base CSS used in this project and
+   other common CSS shared by components
+*/
+
+html, body {
+  height: 100%;
+  font-family: Noto Sans, arial, verdana;
+  background-color: #f6f6f6;
+}
+
+#root {
+  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-right: 95px;
+    padding-left: 95px;
+  }
+
+  .center-col {
+    padding: 0 30px 0 30px;
+  }
+}
