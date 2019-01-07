@@ -14,12 +14,6 @@ import Post from '../posts/post';
 export default class Home extends Component {
   constructor(props) {
     super(props);
-    this.handleHide = this.handleHide.bind(this);
-    this.getAllSkills = this.getAllSkills.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.addSkills = this.addSkills.bind(this);
-    this.loadHomePosts = this.loadHomePosts.bind(this);
-
     this.state = {
       allSkills: [],
       selectedSkills: [],
@@ -29,6 +23,12 @@ export default class Home extends Component {
       allHomePosts: [],
       hasMoreItems: true
     };
+    
+    this.handleHide = this.handleHide.bind(this);
+    this.getAllSkills = this.getAllSkills.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.addSkills = this.addSkills.bind(this);
+    this.loadHomePosts = this.loadHomePosts.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +36,7 @@ export default class Home extends Component {
   }
 
   loadHomePosts(page) {
+    console.log(page);
     APIUtil.getAllHomePosts(page).then(response => {
       var hasMoreItems = !(response.data.length === 0);
       var allHomePosts = this.state.allHomePosts;
@@ -50,9 +51,7 @@ export default class Home extends Component {
   }
 
   addSkills() {
-    console.log(this.state.selectedSkills);
     this.state.selectedSkills = this.state.selectedSkills.map(skill_data => skill_data.value);
-    console.log(this.state.selectedSkills);
     APIUtil.addSkills(this.state.selectedSkills).then(response => {
       this.setState({show: false});
     }).catch(error => {

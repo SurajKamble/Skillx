@@ -1,3 +1,8 @@
+/*
+   Define the base CSS used in this project and
+   other common CSS shared by components
+*/
+
 html, body {
   height: 100%;
   font-family: Noto Sans, arial, verdana;

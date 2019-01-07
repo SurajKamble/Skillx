@@ -5,6 +5,7 @@ export default class PostsContainer extends Component {
   render() {
     const loader = <div className="loader" key='1'>Loading ...</div>;
     return (
+      <div key={this.props.keyId}>
       <InfiniteScroll
         pageStart={0}
         initialLoad={true}
@@ -13,6 +14,7 @@ export default class PostsContainer extends Component {
         loader={loader}>
         {this.props.posts}
       </InfiniteScroll>
+      </div>
     );
   }
 }

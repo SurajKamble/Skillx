@@ -130,15 +130,15 @@ export default class MySkills extends Component {
         so that the posts get updated.
      */
      if (this.state.newPostAdded) {
-       key = this.state.selectedSkillId + 100000;
+       key += 100000;
      }
      /*
         Important to have a unique key for this div since we need a unique div
         for posts of each UserSkill
       */
-    var postsContainer = <div key={key}>
-      <PostsContainer loadHomePosts={this.getAllUserSkillPosts}
-        hasMoreItems={this.state.hasMoreItems} posts={posts}/></div>;
+    var postsContainer =
+      <PostsContainer keyId={key} loadHomePosts={this.getAllUserSkillPosts}
+        hasMoreItems={this.state.hasMoreItems} posts={posts}/>;
 
     return (<Row>
       <Col xsHidden={true} sm={2} md={2} lg={2}>

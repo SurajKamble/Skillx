@@ -16,7 +16,9 @@ export default class Post extends Component {
     return (<Panel key={this.props.id} className="post-panel">
       <div className="post-header-div">
         <div className="post-header-image-div">
+          <a href={user_url}>
           <img className="post-header-image" src={this.state.post.display_picture}></img>
+          </a>
         </div>
         <div className="post-header-username-div">
           <h5 className="post-header-username">

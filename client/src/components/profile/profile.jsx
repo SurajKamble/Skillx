@@ -101,9 +101,9 @@ export default class Profile extends Component {
         <Post post={post} id={post.id}/>
       </div>)
     });
-    var postsContainer = <div key={this.state.selectedSkillId}>
-      <PostsContainer loadHomePosts={this.getAllUserSkillPosts}
-        hasMoreItems={this.state.hasMoreItems} posts={posts}/></div>;
+    var postsContainer =
+      <PostsContainer keyId={this.state.selectedSkillId} loadHomePosts={this.getAllUserSkillPosts}
+        hasMoreItems={this.state.hasMoreItems} posts={posts}/>;
     return (
       <Row className="show-grid">
         <Col xsHidden sm={2} md={2} lg={2}>
